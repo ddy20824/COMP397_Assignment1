@@ -12,8 +12,8 @@ namespace Platformer397
         // In Awake, I want to lock the mouse into the Game View in Unity and turn the cursor invisible
         private void Awake()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             if (player != null) return;
             player = GameObject.FindWithTag("Player").transform;
         }
