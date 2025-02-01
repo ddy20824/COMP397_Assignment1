@@ -1,3 +1,16 @@
+/*
+ * Source File: PlayerController.cs
+ * Author: Class sample
+ * Student Number:
+ * Date Last Modified: 2025-02-01
+ * 
+ * Program Description:
+ * This program manages the controller of player.
+ * 
+ * Revision History:
+ * - 2025-02-01: Initial version created.
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
 

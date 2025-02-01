@@ -1,3 +1,16 @@
+/*
+ * Source File: MenuController.cs
+ * Author: YuHsuan Chen
+ * Student Number: 301448975
+ * Date Last Modified: 2025-02-01
+ * 
+ * Program Description:
+ * This program manages the opening and closing of a menu system.
+ * It provides functions to toggle the menu state and handle related UI interactions.
+ * 
+ * Revision History:
+ * - 2025-02-01: Initial version created.
+ */
 using UnityEngine;
 
 namespace Platformer397
@@ -8,9 +21,12 @@ namespace Platformer397
         public GameObject optionMenu;
         public GameObject pauseMenu;
         public GameObject bagMenu;
+        public GameObject mapMenu;
+        public GameObject endMenu;
         bool optionMenuOpen = false;
         bool pauseMenuOpen = false;
         bool bagMenuOpen = false;
+        bool mapMenuOpen = false;
 
         void Awake()
         {
@@ -20,7 +36,7 @@ namespace Platformer397
         {
             if (startMenu.activeSelf == false)
             {
-                if (Input.GetKeyDown(KeyCode.Escape) && !bagMenuOpen && !optionMenuOpen)
+                if (Input.GetKeyDown(KeyCode.Escape) && !bagMenuOpen && !optionMenuOpen && !mapMenuOpen)
                 {
                     if (!pauseMenuOpen)
                     {
@@ -31,7 +47,7 @@ namespace Platformer397
                         ClosePausePanel();
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.I) && !pauseMenuOpen)
+                if (Input.GetKeyDown(KeyCode.I) && !pauseMenuOpen && !mapMenuOpen)
                 {
                     if (!bagMenuOpen)
                     {
@@ -41,6 +57,22 @@ namespace Platformer397
                     {
                         CloseBagPanel();
                     }
+                }
+                if (Input.GetKeyDown(KeyCode.M) && !bagMenuOpen && !optionMenuOpen && !pauseMenuOpen)
+                {
+                    if (!mapMenuOpen)
+                    {
+                        OpenMapPanel();
+                    }
+                    else
+                    {
+                        CloseMapPanel();
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.G) && !bagMenuOpen && !optionMenuOpen && !pauseMenuOpen && !bagMenuOpen)
+                {
+                    OpenEndPanel();
                 }
             }
         }
@@ -88,6 +120,28 @@ namespace Platformer397
         {
             bagMenu.SetActive(false);
             bagMenuOpen = false;
+        }
+
+        public void OpenMapPanel()
+        {
+            mapMenu.SetActive(true);
+            mapMenuOpen = true;
+        }
+
+        public void CloseMapPanel()
+        {
+            mapMenu.SetActive(false);
+            mapMenuOpen = false;
+        }
+
+        public void OpenEndPanel()
+        {
+            endMenu.SetActive(true);
+        }
+
+        public void CloseEndPanel()
+        {
+            endMenu.SetActive(false);
         }
 
         public void ExitGame()
