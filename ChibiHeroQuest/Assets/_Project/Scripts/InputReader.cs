@@ -22,6 +22,8 @@ namespace Platformer397
     public class InputReader : ScriptableObject, IPlayerActions
     {
         public event UnityAction<Vector2> Move = delegate { };
+        public event UnityAction Jump = delegate { };
+        public event UnityAction Attack = delegate { };
 
         InputSystem_Actions input;
         private void OnEnable()
@@ -51,10 +53,31 @@ namespace Platformer397
             }
         }
         public void OnLook(InputAction.CallbackContext context) { }
-        public void OnAttack(InputAction.CallbackContext context) { }
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                case InputActionPhase.Canceled:
+                    Attack?.Invoke();
+                    break;
+                default:
+                    break;
+            }
+        }
         public void OnInteract(InputAction.CallbackContext context) { }
         public void OnCrouch(InputAction.CallbackContext context) { }
-        public void OnJump(InputAction.CallbackContext context) { }
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    Jump?.Invoke();
+                    break;
+                default:
+                    break;
+            }
+        }
         public void OnPrevious(InputAction.CallbackContext context) { }
         public void OnNext(InputAction.CallbackContext context) { }
         public void OnSprint(InputAction.CallbackContext context) { }
