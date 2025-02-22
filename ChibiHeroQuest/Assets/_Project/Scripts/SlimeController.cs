@@ -1,19 +1,21 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Platformer397
 {
-    public class EnemyAIController : MonoBehaviour
+    public class SlimeController : MonoBehaviour
     {
-        public NavMeshAgent agent;
+        private Animator anim;
+        private NavMeshAgent agent;
         public GameObject player;
         public LayerMask whatIsGround, whatIsPlayer;
 
         //Patroling
-        public Vector3 walkPoint;
-        bool walkPointSet;
-        public float walkPointRange;
+        [SerializeField] private List<Transform> waypoints = new List<Transform>();
+        [SerializeField] private float distanceThreshold = 1.0f;
+        private Vector3 destination;
 
         //Attacking
         public float timeBetweenAttacks;
@@ -28,11 +30,13 @@ namespace Platformer397
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            anim = GetComponent<Animator>();
+            destination = waypoints[0].position;
         }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            agent.destination = destination;
         }
 
         // Update is called once per frame
@@ -56,6 +60,7 @@ namespace Platformer397
             {
                 //Attack code here
 
+                anim.SetBool("IsAttacking", true);
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -65,6 +70,7 @@ namespace Platformer397
         private void ResetAttack()
         {
             alreadyAttacked = false;
+            anim.SetBool("IsAttacking", false);
         }
 
         private void ChasePlayer()
@@ -74,28 +80,11 @@ namespace Platformer397
 
         private void Patroling()
         {
-            if (!walkPointSet) SearchWalkPoint();
-
-            if (walkPointSet)
-                agent.SetDestination(walkPoint);
-
-            Vector3 distanaceToWalkPoint = transform.position - walkPoint;
-
-            //Walkpoint reached
-            if (distanaceToWalkPoint.magnitude < 2f)
-                walkPointSet = false;
-        }
-
-        private void SearchWalkPoint()
-        {
-            float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-            float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-
-            walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-            if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+            if (Vector3.Distance(destination, transform.position) < distanceThreshold)
             {
-                walkPointSet = true;
+                int randomIndex = UnityEngine.Random.Range(0, waypoints.Count);
+                destination = waypoints[randomIndex].position;
+                agent.SetDestination(destination);
             }
         }
 
