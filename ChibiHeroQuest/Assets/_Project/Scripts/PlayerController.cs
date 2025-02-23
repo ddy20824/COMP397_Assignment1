@@ -11,6 +11,7 @@
  * - 2025-02-01: Initial version created.
  */
 
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,11 +30,14 @@ namespace Platformer397
 
         [SerializeField] private Transform mainCam;
         [SerializeField] private LayerMask isCloud;
+        [SerializeField] private int fallHeight = -10;
         private Animator anim;
         private bool isTouchingGround;
         private float distToGround;
         private bool isAttacking;
         private int bouncyMag = 1;
+        private Vector3 initLocation = new Vector3(-3f, 8f, 20f);
+        private Quaternion initQuaternion = new Quaternion(0, 180, 0, 0);
 
         private void Awake()
         {
@@ -70,8 +74,17 @@ namespace Platformer397
 
         private void FixedUpdate()
         {
+            FallCheck();
             GroundCheck();
             UpdateMovement();
+        }
+
+        private void FallCheck()
+        {
+            if (transform.position.y < fallHeight)
+            {
+                Reset();
+            }
         }
 
         private void UpdateMovement()
@@ -151,6 +164,7 @@ namespace Platformer397
                 bouncyMag = 1;
             }
         }
+
         void OnTriggerStay(Collider other)
         {
             if (isAttacking && other.gameObject.tag == "Enemy")
@@ -159,6 +173,17 @@ namespace Platformer397
                 var enemyController = other.gameObject.GetComponent<EnemyController>();
                 enemyController.TakeDamage();
             }
+        }
+        public void Dead()
+        {
+            anim.SetBool("IsDead", true);
+            StartCoroutine(Helper.Delay(Reset, 1f));
+        }
+
+        public void Reset()
+        {
+            anim.SetBool("IsDead", false);
+            transform.SetPositionAndRotation(initLocation, initQuaternion);
         }
     }
 }
