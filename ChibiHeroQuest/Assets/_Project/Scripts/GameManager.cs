@@ -1,3 +1,17 @@
+/*
+ * Source File: GameManager.cs
+ * Author: YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-02-23
+ * 
+ * Program Description:
+ * This program manages the audio and is a singleton.
+ * 
+ * Revision History:
+ * - 2025-02-22: Initial version created. Add volume silder and music/sound.
+ * - 2025-02-23: Add Game Over music.
+ */
+
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
@@ -13,6 +27,7 @@ namespace Platformer397
         public AudioSource audioSource;
         public AudioClip mainMenuMusic;
         public AudioClip gamePlayMusic;
+        public AudioClip gameOverMusic;
         [SerializeField] Slider musicSlider;
         [SerializeField] Slider soundSlider;
 
@@ -51,6 +66,11 @@ namespace Platformer397
         public void PlayGamePlayMusic()
         {
             PlayMusic(gamePlayMusic);
+        }
+
+        public void PlayGameOverMusic()
+        {
+            PlayMusic(gameOverMusic);
         }
 
         private void PlayMusic(AudioClip clip)

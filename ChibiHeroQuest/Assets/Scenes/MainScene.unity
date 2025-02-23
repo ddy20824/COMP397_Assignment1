@@ -2030,6 +2030,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145191460}
   m_CullTransparentMesh: 1
+--- !u!1 &150233939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 331471982246635367, guid: 90720051a6a5d1147bff2d14c7a7c382, type: 3}
+  m_PrefabInstance: {fileID: 322272607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &150417648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4698,10 +4703,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6146977859234805504, guid: 90720051a6a5d1147bff2d14c7a7c382, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 331471982246635367, guid: 90720051a6a5d1147bff2d14c7a7c382, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1280695261}
   m_SourcePrefab: {fileID: 100100000, guid: 90720051a6a5d1147bff2d14c7a7c382, type: 3}
 --- !u!4 &324040868 stripped
 Transform:
@@ -10627,6 +10636,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673842780}
   m_CullTransparentMesh: 1
+--- !u!1 &673852195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 130964, guid: c644a2181ac22e740968a7ece97e8f36, type: 3}
+  m_PrefabInstance: {fileID: 1403386537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &673852197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673852195}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &674211643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11270,6 +11305,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1249542233}
         m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
         m_MethodName: CloseEndPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1249542233}
+        m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21535,6 +21582,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1140097549923679709, guid: 90720051a6a5d1147bff2d14c7a7c382, type: 3}
   m_PrefabInstance: {fileID: 322272607}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1280695261
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150233939}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4024815224324953287, guid: d42b995400193b14e9f5b1c8f9b002d9, type: 3}
 --- !u!1001 &1281976864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24394,12 +24463,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9550000, guid: c644a2181ac22e740968a7ece97e8f36, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 130964, guid: c644a2181ac22e740968a7ece97e8f36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 673852197}
   m_SourcePrefab: {fileID: 100100000, guid: c644a2181ac22e740968a7ece97e8f36, type: 3}
 --- !u!1001 &1405749416
 PrefabInstance:
@@ -35449,6 +35521,7 @@ MonoBehaviour:
   audioSource: {fileID: 1315790619}
   mainMenuMusic: {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
   gamePlayMusic: {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: eb7f10105313640a18ce7926041a4d76, type: 3}
   musicSlider: {fileID: 1699138362}
   soundSlider: {fileID: 1693600819}
 --- !u!4 &2015105601
@@ -36025,7 +36098,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1249542233}
         m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
-        m_MethodName: OpenStartPanel
+        m_MethodName: CloseEndPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36037,7 +36110,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1249542233}
         m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
-        m_MethodName: CloseEndPanel
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

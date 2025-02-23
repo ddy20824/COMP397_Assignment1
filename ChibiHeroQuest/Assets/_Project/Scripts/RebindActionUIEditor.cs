@@ -5,7 +5,7 @@
  * Date Last Modified: 2025-02-22
  * 
  * Program Description:
- * This program manages the controller of player.
+ * This program manages the rebind UI.
  * 
  * Revision History:
  * - 2025-02-23: Initial version created. Add InputReader rebinds.

@@ -12,9 +12,7 @@
  * - 2025-02-23: Move same function to EnemyController.
  */
 
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Platformer397
 {

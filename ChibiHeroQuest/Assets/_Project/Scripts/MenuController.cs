@@ -189,6 +189,7 @@ namespace Platformer397
             endMenu.SetActive(true);
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
+            GameManager.Instance.PlayGameOverMusic();
         }
 
         public void CloseEndPanel()

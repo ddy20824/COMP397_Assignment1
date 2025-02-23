@@ -6,7 +6,7 @@
  * Date Last Modified: 2025-02-22
  * 
  * Program Description:
- * This program manages the controller of player.
+ * This program manages the moving platform.
  * 
  * Revision History:
  * - 2025-02-22: Initial version created.
