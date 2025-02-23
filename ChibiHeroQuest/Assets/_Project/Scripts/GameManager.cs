@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Platformer397
 {
@@ -8,9 +9,12 @@ namespace Platformer397
     {
         public static GameManager Instance;
 
+        [SerializeField] AudioMixer audioMixer;
         public AudioSource audioSource;
         public AudioClip mainMenuMusic;
         public AudioClip gamePlayMusic;
+        [SerializeField] Slider musicSlider;
+        [SerializeField] Slider soundSlider;
 
         private void Awake()
         {
@@ -28,7 +32,15 @@ namespace Platformer397
 
         void Start()
         {
-            PlayMainMenuMusic(); // 遊戲啟動時播放主選單音樂
+            PlayMainMenuMusic();
+
+            float musicVolume;
+            audioMixer.GetFloat("MusicVolume", out musicVolume);
+            musicSlider.SetValueWithoutNotify(musicVolume);
+
+            float soundVolume;
+            audioMixer.GetFloat("SoundVolume", out soundVolume);
+            soundSlider.SetValueWithoutNotify(soundVolume);
         }
 
         public void PlayMainMenuMusic()
@@ -48,6 +60,16 @@ namespace Platformer397
                 audioSource.clip = clip;
                 audioSource.Play();
             }
+        }
+
+        public void MusicSlilderOnClick()
+        {
+            audioMixer.SetFloat("MusicVolume", musicSlider.value);
+        }
+
+        public void SoundSlilderOnClick()
+        {
+            audioMixer.SetFloat("SoundVolume", soundSlider.value);
         }
     }
 }

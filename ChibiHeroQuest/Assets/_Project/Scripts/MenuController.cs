@@ -11,7 +11,9 @@
  * Revision History:
  * - 2025-02-01: Initial version created.
  */
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Platformer397
 {
@@ -165,6 +167,16 @@ namespace Platformer397
 #else
             Application.Quit();
 #endif
+        }
+
+        public void MusicSliderOnClick()
+        {
+            GameManager.Instance.MusicSlilderOnClick();
+        }
+
+        public void SoundSlilderOnClick()
+        {
+            GameManager.Instance.SoundSlilderOnClick();
         }
     }
 }
