@@ -144,6 +144,19 @@ namespace Platformer397
             endMenu.SetActive(false);
         }
 
+        public void NewGame()
+        {
+            CloseStartPanel();
+            GameManager.Instance.PlayGamePlayMusic();
+        }
+
+        public void BackToMenu()
+        {
+            OpenStartPanel();
+            ClosePausePanel();
+            GameManager.Instance.PlayMainMenuMusic();
+        }
+
         public void ExitGame()
         {
             Debug.Log("Exit Game");
