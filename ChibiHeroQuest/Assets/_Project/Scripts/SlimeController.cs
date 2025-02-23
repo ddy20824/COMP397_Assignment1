@@ -5,39 +5,11 @@ using UnityEngine.AI;
 
 namespace Platformer397
 {
-    public class SlimeController : MonoBehaviour
+    public class SlimeController : EnemyController
     {
-        private Animator anim;
-        private NavMeshAgent agent;
-        public GameObject player;
-        public LayerMask whatIsGround, whatIsPlayer;
-
-        //Patroling
-        [SerializeField] private List<Transform> waypoints = new List<Transform>();
-        [SerializeField] private float distanceThreshold = 1.0f;
-        private Vector3 destination;
-
-        //Attacking
-        public float timeBetweenAttacks;
-        bool alreadyAttacked;
-
-        //States
-        public float sightRange, attackRange;
-        public bool playerInSightRange, playerInAttackRange;
-
-        public int health;
-
-        private void Awake()
-        {
-            agent = GetComponent<NavMeshAgent>();
-            anim = GetComponent<Animator>();
-            destination = waypoints[0].position;
-        }
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-            agent.destination = destination;
-        }
+        [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
+        [SerializeField] private float sightRange, attackRange;
+        private bool playerInSightRange, playerInAttackRange;
 
         // Update is called once per frame
         void Update()
@@ -53,24 +25,7 @@ namespace Platformer397
         private void AttackPlayer()
         {
             agent.SetDestination(transform.position);
-
-            transform.LookAt(player.transform);
-
-            if (!alreadyAttacked)
-            {
-                //Attack code here
-
-                anim.SetBool("IsAttacking", true);
-
-                alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            }
-        }
-
-        private void ResetAttack()
-        {
-            alreadyAttacked = false;
-            anim.SetBool("IsAttacking", false);
+            base.AttackPlayer();
         }
 
         private void ChasePlayer()
@@ -86,21 +41,6 @@ namespace Platformer397
                 destination = waypoints[randomIndex].position;
                 agent.SetDestination(destination);
             }
-        }
-
-        public void TakeDamage(int damage)
-        {
-            health -= damage;
-
-            if (health <= 0)
-            {
-                Invoke(nameof(DestroyEnemy), 2f);
-            }
-        }
-
-        private void DestroyEnemy()
-        {
-            Destroy(gameObject);
         }
     }
 }

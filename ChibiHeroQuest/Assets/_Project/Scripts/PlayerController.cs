@@ -151,5 +151,14 @@ namespace Platformer397
                 bouncyMag = 1;
             }
         }
+        void OnTriggerStay(Collider other)
+        {
+            if (isAttacking && other.gameObject.tag == "Enemy")
+            {
+                transform.LookAt(other.transform);
+                var enemyController = other.gameObject.GetComponent<EnemyController>();
+                enemyController.TakeDamage();
+            }
+        }
     }
 }

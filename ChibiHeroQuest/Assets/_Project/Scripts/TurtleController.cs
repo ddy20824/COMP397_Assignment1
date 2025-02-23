@@ -4,31 +4,12 @@ using UnityEngine.AI;
 
 namespace Platformer397
 {
-    public class TurtleController : MonoBehaviour
+    public class TurtleController : EnemyController
     {
-        private NavMeshAgent agent;
-        private Animator anim;
-        [SerializeField] private GameObject player;
-        [SerializeField] private List<Transform> waypoints = new List<Transform>();
-        [SerializeField] private float distanceThreshold = 1.0f;
         [SerializeField] private LayerMask whatIsPlayer;
-        [SerializeField] private float timeBetweenAttacks;
         private int index = 0;
-        private Vector3 destination;
-        private bool alreadyAttacked;
         private bool playerInAttackRange;
-        private void Awake()
-        {
-            agent = GetComponent<NavMeshAgent>();
-            anim = GetComponent<Animator>();
-            destination = waypoints[index].position;
-        }
 
-        private void Start()
-        {
-            agent.destination = destination;
-
-        }
         void Update()
         {
             playerInAttackRange = Physics.CheckSphere(transform.position, 1, whatIsPlayer);
@@ -46,28 +27,6 @@ namespace Platformer397
                 destination = waypoints[index].position;
                 agent.destination = destination;
             }
-        }
-
-
-        private void AttackPlayer()
-        {
-            transform.LookAt(player.transform);
-
-            if (!alreadyAttacked)
-            {
-                //Attack code here
-
-                anim.SetBool("IsAttacking", true);
-
-                alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            }
-        }
-
-        private void ResetAttack()
-        {
-            alreadyAttacked = false;
-            anim.SetBool("IsAttacking", false);
         }
     }
 }
