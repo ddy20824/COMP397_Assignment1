@@ -1,19 +1,21 @@
 /*
  * Source File: PlayerController.cs
- * Author: Class sample
+ * Author: Class sample, Chiayi Lin
+ * Student Number: 301448962
  * Student Number:
- * Date Last Modified: 2025-02-01
+ * Date Last Modified: 2025-02-23
  * 
  * Program Description:
  * This program manages the controller of player.
  * 
  * Revision History:
  * - 2025-02-01: Initial version created.
+ * - 2025-02-21: Add groundCheck.
+ * - 2025-02-22: Add cloud.
+ * - 2025-02-23: Add death and reset.
  */
 
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Platformer397
 {

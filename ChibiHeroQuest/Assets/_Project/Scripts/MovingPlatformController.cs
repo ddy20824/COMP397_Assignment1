@@ -1,3 +1,16 @@
+/*
+ * Source File: MovingPlatformController.cs
+ * Author: YuHsuan Chen
+ * Student Number: 301448975
+ * Student Number:
+ * Date Last Modified: 2025-02-22
+ * 
+ * Program Description:
+ * This program manages the controller of player.
+ * 
+ * Revision History:
+ * - 2025-02-22: Initial version created.
+ */
 using UnityEngine;
 
 namespace Platformer397

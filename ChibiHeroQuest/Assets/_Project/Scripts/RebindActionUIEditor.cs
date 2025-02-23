@@ -1,3 +1,16 @@
+/*
+ * Source File: RebindActionUIEditor.cs
+ * Author: Official sample, YuHsuanChen
+ * Student Number:
+ * Date Last Modified: 2025-02-22
+ * 
+ * Program Description:
+ * This program manages the controller of player.
+ * 
+ * Revision History:
+ * - 2025-02-23: Initial version created. Add InputReader rebinds.
+ */
+
 #if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;

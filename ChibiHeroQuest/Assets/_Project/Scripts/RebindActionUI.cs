@@ -1,3 +1,16 @@
+/*
+ * Source File: RebindActionUI.cs
+ * Author: Official sample, YuHsuanChen
+ * Student Number:
+ * Date Last Modified: 2025-02-23
+ * 
+ * Program Description:
+ * This program manages the controller of player.
+ * 
+ * Revision History:
+ * - 2025-02-23: Initial version created. Add InputReader rebinds
+ */
+
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +30,7 @@ namespace Platformer397
     /// </summary>
     public class RebindActionUI : MonoBehaviour
     {
+        // Set customer InputReader
         public InputReader inputReaderReference
         {
             get => inputReader;
@@ -25,6 +39,7 @@ namespace Platformer397
                 inputReader = value;
             }
         }
+
         /// <summary>
         /// Reference to the action that is to be rebound.
         /// </summary>
@@ -242,11 +257,10 @@ namespace Platformer397
             UpdateBindingDisplay();
         }
 
-        public void StartRebinding()
+        //Call customer rebinding with index
+        public void StartRebinding(InputAction action, int bindingIndex)
         {
-            if (!ResolveActionAndBinding(out var action, out var bindingIndex))
-                return;
-            inputReader.StartRebind(action);
+            inputReader.StartRebind(action, bindingIndex);
         }
 
         /// <summary>
@@ -339,7 +353,8 @@ namespace Platformer397
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
 
             m_RebindOperation.Start();
-            this.StartRebinding();
+            // Call custmized rebinding
+            this.StartRebinding(action, bindingIndex);
         }
 
         protected void OnEnable()

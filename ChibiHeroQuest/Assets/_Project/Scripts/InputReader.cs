@@ -1,18 +1,17 @@
 /*
  * Source File: InputReader.cs
- * Author: Class sample
+ * Author: Class sample, YuHsuanChen
  * Student Number:
- * Date Last Modified: 2025-02-01
+ * Date Last Modified: 2025-02-23
  * 
  * Program Description:
  * This program manages the controller of player.
  * 
  * Revision History:
  * - 2025-02-01: Initial version created.
+ * - 2025-02-23: Add Map, Bag and RebindActions.
  */
 
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -122,10 +121,8 @@ namespace Platformer397
             }
         }
 
-        /// <summary>
-        /// 進行 Rebind（按鍵重新綁定）
-        /// </summary>
-        public void StartRebind(InputAction actionName, System.Action onComplete = null)
+
+        public void StartRebind(InputAction actionName, int bindingIndex, System.Action onComplete = null)
         {
             InputAction action = input.asset.FindAction(actionName.name);
             if (action == null)
@@ -135,28 +132,18 @@ namespace Platformer397
             }
 
             action.Disable();
-            action.PerformInteractiveRebinding()
+            action.PerformInteractiveRebinding(bindingIndex)
                 .WithControlsExcluding("Mouse")
                 .OnComplete(callback =>
                 {
-                    int bindingIndex = action.GetBindingIndexForControl(callback.selectedControl);
-                    if (bindingIndex != -1)
-                    {
-                        action.ApplyBindingOverride(bindingIndex, callback.selectedControl.path);
-                    }
                     action.Enable();
                     callback.Dispose();
-                    SaveBinding(); // 儲存綁定
-
+                    // SaveBinding();
                     onComplete?.Invoke();
                 })
                 .Start();
         }
 
-
-        /// <summary>
-        /// 儲存目前的按鍵綁定
-        /// </summary>
         public void SaveBinding()
         {
             input.Disable(); // 先關閉，確保修改後能被儲存
@@ -170,7 +157,6 @@ namespace Platformer397
             input.Enable(); // 重新啟用
         }
 
-        /// 載入玩家自定義的按鍵綁定
         public void LoadBinding()
         {
             if (PlayerPrefs.HasKey("InputBindings"))
@@ -192,7 +178,6 @@ namespace Platformer397
 
             if (action.bindings[bindingIndex].isComposite)
             {
-                // It's a composite. Remove overrides from part bindings.
                 for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
                     action.RemoveBindingOverride(i);
             }

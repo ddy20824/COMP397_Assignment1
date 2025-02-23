@@ -1,8 +1,8 @@
 /*
  * Source File: MenuController.cs
- * Author: YuHsuan Chen
- * Student Number: 301448975
- * Date Last Modified: 2025-02-01
+ * Author: YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-02-23
  * 
  * Program Description:
  * This program manages the opening and closing of a menu system.
@@ -10,10 +10,10 @@
  * 
  * Revision History:
  * - 2025-02-01: Initial version created.
+ * - 2025-02-22: Add Music/Sound Slider
+ * - 2025-02-23: Add Cursor Lock/None, HandleMap/HandleBag/HandlePause
  */
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Platformer397
 {
