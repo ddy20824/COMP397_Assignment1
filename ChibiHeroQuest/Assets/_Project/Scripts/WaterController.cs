@@ -4,7 +4,9 @@ namespace Platformer397
 {
     public class WaterController : MonoBehaviour
     {
-        public LayerMask isPlayer;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip sound;
+        [SerializeField] private LayerMask isPlayer;
         private PlayerController playerController;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -22,6 +24,7 @@ namespace Platformer397
         {
             if (isPlayer == (isPlayer | (1 << other.gameObject.layer)))
             {
+                audioSource.PlayOneShot(sound);
                 StartCoroutine(Helper.Delay(playerController.Dead, 0.3f));
             }
         }

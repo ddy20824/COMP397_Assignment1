@@ -33,6 +33,9 @@ namespace Platformer397
         [SerializeField] private Transform mainCam;
         [SerializeField] private LayerMask isCloud;
         [SerializeField] private int fallHeight = -10;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip attackSound;
+        [SerializeField] private AudioClip onCloudSound;
         private Animator anim;
         private bool isTouchingGround;
         private float distToGround;
@@ -122,8 +125,13 @@ namespace Platformer397
 
         private void HandleAttack()
         {
-            isAttacking = !isAttacking;
-            anim.SetBool("IsAttacking", isAttacking);
+            if (Time.timeScale == 1)
+            {
+                if (isAttacking)
+                    audioSource.PlayOneShot(attackSound);
+                isAttacking = !isAttacking;
+                anim.SetBool("IsAttacking", isAttacking);
+            }
         }
 
         private void HandleJump()
@@ -160,6 +168,7 @@ namespace Platformer397
         {
             if (isCloud == (isCloud | (1 << collision.gameObject.layer)))
             {
+                audioSource.PlayOneShot(onCloudSound);
                 bouncyMag = 2;
             }
             else

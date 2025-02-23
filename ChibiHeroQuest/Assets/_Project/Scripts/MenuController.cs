@@ -203,8 +203,8 @@ namespace Platformer397
 
         public void BackToMenu()
         {
-            OpenStartPanel();
             ClosePausePanel();
+            OpenStartPanel();
             GameManager.Instance.PlayMainMenuMusic();
         }
 

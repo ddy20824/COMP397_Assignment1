@@ -10,6 +10,9 @@ namespace Platformer397
         [SerializeField] protected GameObject player;
         [SerializeField] protected float timeBetweenAttacks;
         [SerializeField] protected float distanceThreshold = 1.0f;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip attackSound;
+        [SerializeField] private AudioClip deadSound;
         protected Animator anim;
         protected NavMeshAgent agent;
         protected Vector3 destination;
@@ -40,6 +43,7 @@ namespace Platformer397
             {
                 //Attack code here
 
+                audioSource.PlayOneShot(attackSound);
                 anim.SetBool("IsAttacking", true);
 
                 alreadyAttacked = true;
@@ -54,6 +58,7 @@ namespace Platformer397
 
         public void TakeDamage()
         {
+            audioSource.PlayOneShot(deadSound);
             alreadyAttacked = true;
             anim.SetBool("IsDead", true);
             Invoke(nameof(DestroyEnemy), 1f);
