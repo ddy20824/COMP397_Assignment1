@@ -32,6 +32,7 @@ namespace Platformer397
 
         void Awake()
         {
+            Time.timeScale = 0;
             startMenu.SetActive(true);
         }
         void Update()
@@ -82,11 +83,15 @@ namespace Platformer397
         public void OpenStartPanel()
         {
             startMenu.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void CloseStartPanel()
         {
             startMenu.SetActive(false);
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OpenOptionPanel()
@@ -104,46 +109,62 @@ namespace Platformer397
         {
             pauseMenu.SetActive(true);
             pauseMenuOpen = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void ClosePausePanel()
         {
             pauseMenu.SetActive(false);
             pauseMenuOpen = false;
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OpenBagPanel()
         {
             bagMenu.SetActive(true);
             bagMenuOpen = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void CloseBagPanel()
         {
             bagMenu.SetActive(false);
             bagMenuOpen = false;
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OpenMapPanel()
         {
             mapMenu.SetActive(true);
             mapMenuOpen = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void CloseMapPanel()
         {
             mapMenu.SetActive(false);
             mapMenuOpen = false;
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OpenEndPanel()
         {
             endMenu.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void CloseEndPanel()
         {
             endMenu.SetActive(false);
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void NewGame()

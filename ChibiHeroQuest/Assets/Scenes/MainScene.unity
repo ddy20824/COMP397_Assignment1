@@ -29220,9 +29220,6 @@ MonoBehaviour:
     m_Bits: 128
   sightRange: 10
   attackRange: 1
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  health: 5
 --- !u!195 &1930353715
 NavMeshAgent:
   m_ObjectHideFlags: 0
