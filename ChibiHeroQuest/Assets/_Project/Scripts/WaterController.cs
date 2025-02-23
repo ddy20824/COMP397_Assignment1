@@ -1,3 +1,16 @@
+/*
+ * Source File: WaterController.cs
+ * Author: Chiayi Lin
+ * Student Number: 301448962
+ * Date Last Modified: 2025-02-23
+ * 
+ * Program Description:
+ * This program manages the water.
+ * 
+ * Revision History:
+ * - 2025-02-23: When TriggerEnter player drown.
+ */
+
 using UnityEngine;
 
 namespace Platformer397

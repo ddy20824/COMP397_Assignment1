@@ -2,7 +2,6 @@
  * Source File: PlayerController.cs
  * Author: Class sample, Chiayi Lin
  * Student Number: 301448962
- * Student Number:
  * Date Last Modified: 2025-02-23
  * 
  * Program Description:
@@ -12,7 +11,7 @@
  * - 2025-02-01: Initial version created.
  * - 2025-02-21: Add groundCheck.
  * - 2025-02-22: Add cloud.
- * - 2025-02-23: Add death and reset.
+ * - 2025-02-23: Add death and reset, sound.
  */
 
 using UnityEngine;

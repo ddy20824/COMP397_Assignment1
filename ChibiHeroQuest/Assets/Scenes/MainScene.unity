@@ -12510,7 +12510,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1249542233}
         m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
-        m_MethodName: CloseStartPanel
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21058,6 +21058,8 @@ MonoBehaviour:
   mapMenu: {fileID: 1151187093}
   endMenu: {fileID: 576239415}
   input: {fileID: 11400000, guid: eb9a0099e8a9f9245afb7d1c598ca317, type: 2}
+  audioSource: {fileID: 2054124124}
+  buttonSound: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
 --- !u!4 &1249542234
 Transform:
   m_ObjectHideFlags: 0
@@ -30930,7 +30932,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1727014317}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1249542233}
+        m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1727014317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36357,7 +36371,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2054409697}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1249542233}
+        m_TargetAssemblyTypeName: Platformer397.MenuController, Assembly-CSharp
+        m_MethodName: PauseLoadGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2054409697
 MonoBehaviour:
   m_ObjectHideFlags: 0

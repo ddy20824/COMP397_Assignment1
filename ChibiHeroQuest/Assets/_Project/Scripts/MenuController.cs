@@ -11,7 +11,7 @@
  * Revision History:
  * - 2025-02-01: Initial version created.
  * - 2025-02-22: Add Music/Sound Slider
- * - 2025-02-23: Add Cursor Lock/None, HandleMap/HandleBag/HandlePause
+ * - 2025-02-23: Add Cursor Lock/None, HandleMap/HandleBag/HandlePause, buttonSound
  */
 using UnityEngine;
 
@@ -30,6 +30,8 @@ namespace Platformer397
         bool bagMenuOpen = false;
         bool mapMenuOpen = false;
         [SerializeField] private InputReader input;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip buttonSound;
 
         void Awake()
         {
@@ -124,6 +126,7 @@ namespace Platformer397
 
         public void OpenOptionPanel()
         {
+            audioSource.PlayOneShot(buttonSound);
             optionMenu.SetActive(true);
             optionMenuOpen = true;
         }
@@ -197,12 +200,35 @@ namespace Platformer397
 
         public void NewGame()
         {
+            audioSource.PlayOneShot(buttonSound);
             CloseStartPanel();
+            GameManager.Instance.PlayGamePlayMusic();
+        }
+
+        public void LoadGame()
+        {
+            audioSource.PlayOneShot(buttonSound);
+            CloseStartPanel();
+            GameManager.Instance.PlayGamePlayMusic();
+        }
+
+        public void PauseLoadGame()
+        {
+            audioSource.PlayOneShot(buttonSound);
+            ClosePausePanel();
+            GameManager.Instance.PlayGamePlayMusic();
+        }
+
+        public void SaveGame()
+        {
+            audioSource.PlayOneShot(buttonSound);
+            ClosePausePanel();
             GameManager.Instance.PlayGamePlayMusic();
         }
 
         public void BackToMenu()
         {
+            audioSource.PlayOneShot(buttonSound);
             ClosePausePanel();
             OpenStartPanel();
             GameManager.Instance.PlayMainMenuMusic();
@@ -210,6 +236,7 @@ namespace Platformer397
 
         public void ExitGame()
         {
+            audioSource.PlayOneShot(buttonSound);
             Debug.Log("Exit Game");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
