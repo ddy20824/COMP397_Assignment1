@@ -29,39 +29,36 @@ namespace Platformer397
         bool pauseMenuOpen = false;
         bool bagMenuOpen = false;
         bool mapMenuOpen = false;
+        [SerializeField] private InputReader input;
 
         void Awake()
         {
             Time.timeScale = 0;
             startMenu.SetActive(true);
         }
+
+        void OnEnable()
+        {
+            input.Map += HandleMap;
+            input.Bag += HandleBag;
+            input.Pause += HandlePause;
+        }
         void Update()
         {
             if (startMenu.activeSelf == false)
             {
-                if (Input.GetKeyDown(KeyCode.Escape) && !bagMenuOpen && !optionMenuOpen && !mapMenuOpen)
+                if (Input.GetKeyDown(KeyCode.G) && !bagMenuOpen && !optionMenuOpen && !pauseMenuOpen && !bagMenuOpen)
                 {
-                    if (!pauseMenuOpen)
-                    {
-                        OpenPausePanel();
-                    }
-                    else
-                    {
-                        ClosePausePanel();
-                    }
+                    OpenEndPanel();
                 }
-                if (Input.GetKeyDown(KeyCode.I) && !pauseMenuOpen && !mapMenuOpen)
-                {
-                    if (!bagMenuOpen)
-                    {
-                        OpenBagPanel();
-                    }
-                    else
-                    {
-                        CloseBagPanel();
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.M) && !bagMenuOpen && !optionMenuOpen && !pauseMenuOpen)
+            }
+        }
+
+        public void HandleMap()
+        {
+            if (startMenu.activeSelf == false)
+            {
+                if (!bagMenuOpen && !optionMenuOpen && !pauseMenuOpen)
                 {
                     if (!mapMenuOpen)
                     {
@@ -72,10 +69,41 @@ namespace Platformer397
                         CloseMapPanel();
                     }
                 }
+            }
+        }
 
-                if (Input.GetKeyDown(KeyCode.G) && !bagMenuOpen && !optionMenuOpen && !pauseMenuOpen && !bagMenuOpen)
+        public void HandleBag()
+        {
+            if (startMenu.activeSelf == false)
+            {
+                if (!pauseMenuOpen && !mapMenuOpen)
                 {
-                    OpenEndPanel();
+                    if (!bagMenuOpen)
+                    {
+                        OpenBagPanel();
+                    }
+                    else
+                    {
+                        CloseBagPanel();
+                    }
+                }
+            }
+        }
+
+        public void HandlePause()
+        {
+            if (startMenu.activeSelf == false)
+            {
+                if (!bagMenuOpen && !optionMenuOpen && !mapMenuOpen)
+                {
+                    if (!pauseMenuOpen)
+                    {
+                        OpenPausePanel();
+                    }
+                    else
+                    {
+                        ClosePausePanel();
+                    }
                 }
             }
         }
@@ -84,7 +112,7 @@ namespace Platformer397
         {
             startMenu.SetActive(true);
             Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void CloseStartPanel()

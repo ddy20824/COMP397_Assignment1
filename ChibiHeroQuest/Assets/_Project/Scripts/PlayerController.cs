@@ -52,6 +52,7 @@ namespace Platformer397
         {
             distToGround = transform.GetComponent<Collider>().bounds.extents.y;
             input.EnablePlayerActions();
+            // input.LoadBinding(); // 載入上次的綁定
         }
 
         private void OnEnable()
