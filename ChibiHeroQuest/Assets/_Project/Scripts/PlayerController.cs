@@ -22,17 +22,18 @@ namespace Platformer397
         [SerializeField] private InputReader input;
         [SerializeField] private Rigidbody rb;
         [SerializeField] private Vector3 movement;
-        public float jumpSpeed = 2f;
+        [SerializeField] private float jumpSpeed = 2f;
 
         [SerializeField] private float moveSpeed = 200f;
         [SerializeField] private float rotationSpeed = 200f;
 
         [SerializeField] private Transform mainCam;
+        [SerializeField] private LayerMask isCloud;
         private Animator anim;
         private bool isTouchingGround;
-        public LayerMask groundLayer;
         private float distToGround;
         private bool isAttacking;
+        private int bouncyMag = 1;
 
         private void Awake()
         {
@@ -114,7 +115,7 @@ namespace Platformer397
             if (isTouchingGround)
             {
                 anim.SetBool("IsJumping", true);
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpSpeed, rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpSpeed * bouncyMag, rb.linearVelocity.z);
             }
         }
         private void GroundCheck()
@@ -138,6 +139,17 @@ namespace Platformer397
         {
             movement.x = move.x;
             movement.z = move.y;
+        }
+        void OnCollisionEnter(Collision collision)
+        {
+            if (isCloud == (isCloud | (1 << collision.gameObject.layer)))
+            {
+                bouncyMag = 2;
+            }
+            else
+            {
+                bouncyMag = 1;
+            }
         }
     }
 }
