@@ -39,6 +39,7 @@ namespace Platformer397
         private bool isTouchingGround;
         private float distToGround;
         private bool isAttacking;
+        private bool isDamaging;
         private int bouncyMag = 1;
         private Vector3 initLocation = new Vector3(-3f, 8f, 20f);
         private Quaternion initQuaternion = new Quaternion(0, 180, 0, 0);
@@ -195,6 +196,17 @@ namespace Platformer397
         {
             anim.SetBool("IsDead", false);
             transform.SetPositionAndRotation(initLocation, initQuaternion);
+        }
+
+        public void TakeDamage()
+        {
+            if (!isDamaging)
+            {
+                isDamaging = true;
+                anim.SetTrigger("IsHurt");
+                Debug.Log("player hurt");
+            }
+            StartCoroutine(Helper.Delay(() => { isDamaging = false; }, 0.5f));
         }
     }
 }
