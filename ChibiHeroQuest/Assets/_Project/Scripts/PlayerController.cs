@@ -15,6 +15,7 @@
  */
 
 using UnityEngine;
+using DiabolicalGames;
 
 namespace Platformer397
 {
@@ -186,11 +187,19 @@ namespace Platformer397
 
         void OnTriggerStay(Collider other)
         {
-            if (isAttacking && other.gameObject.tag == "Enemy")
+            if (isAttacking)
             {
-                transform.LookAt(other.transform);
-                var enemyController = other.gameObject.GetComponent<EnemyController>();
-                enemyController.TakeDamage();
+                if (other.gameObject.tag == "Enemy")
+                {
+                    transform.LookAt(other.transform);
+                    var enemyController = other.gameObject.GetComponent<EnemyController>();
+                    enemyController.TakeDamage();
+                }
+                if (other.gameObject.tag == "Destructible")
+                {
+                    var destructibleObject = other.gameObject.GetComponent<DestructibleObject>();
+                    destructibleObject.Break();
+                }
             }
         }
         public void Drawn()
