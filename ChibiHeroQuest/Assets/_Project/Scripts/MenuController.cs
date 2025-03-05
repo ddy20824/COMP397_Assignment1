@@ -37,6 +37,7 @@ namespace Platformer397
         {
             Time.timeScale = 0;
             startMenu.SetActive(true);
+            EventManager.instance.ShowGameOver += OpenEndPanel;
         }
 
         void OnEnable()

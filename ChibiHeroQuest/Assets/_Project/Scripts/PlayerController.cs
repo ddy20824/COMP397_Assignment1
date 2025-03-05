@@ -35,11 +35,13 @@ namespace Platformer397
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip attackSound;
         [SerializeField] private AudioClip onCloudSound;
+        [SerializeField] private int health = 5;
         private Animator anim;
         private bool isTouchingGround;
         private float distToGround;
         private bool isAttacking;
         private bool isDamaging;
+        private bool isDrawn;
         private int bouncyMag = 1;
         private Vector3 initLocation = new Vector3(-3f, 8f, 20f);
         private Quaternion initQuaternion = new Quaternion(0, 180, 0, 0);
@@ -89,6 +91,7 @@ namespace Platformer397
         {
             if (transform.position.y < fallHeight)
             {
+                ReduceHealth();
                 Reset();
             }
         }
@@ -175,6 +178,10 @@ namespace Platformer397
             {
                 bouncyMag = 1;
             }
+            if (collision.gameObject.tag == "Enemy")
+            {
+                TakeDamage();
+            }
         }
 
         void OnTriggerStay(Collider other)
@@ -186,10 +193,16 @@ namespace Platformer397
                 enemyController.TakeDamage();
             }
         }
-        public void Dead()
+        public void Drawn()
         {
-            anim.SetBool("IsDead", true);
-            StartCoroutine(Helper.Delay(Reset, 1f));
+            if (!isDrawn)
+            {
+                isDrawn = true;
+                ReduceHealth();
+                anim.SetBool("IsDead", true);
+                StartCoroutine(Helper.Delay(Reset, 1f));
+                StartCoroutine(Helper.Delay(() => { isDrawn = false; }, 0.5f));
+            }
         }
 
         public void Reset()
@@ -202,11 +215,23 @@ namespace Platformer397
         {
             if (!isDamaging)
             {
+                ReduceHealth();
                 isDamaging = true;
                 anim.SetTrigger("IsHurt");
-                Debug.Log("player hurt");
+                StartCoroutine(Helper.Delay(() => { isDamaging = false; }, 0.5f));
             }
-            StartCoroutine(Helper.Delay(() => { isDamaging = false; }, 0.5f));
+        }
+
+        void ReduceHealth()
+        {
+            health -= 1;
+            EventManager.instance.TriggerUpdateHealth(health);
+            if (health <= 0)
+            {
+                health = 0;
+                anim.SetBool("IsDead", true);
+                StartCoroutine(Helper.Delay(EventManager.instance.TriggerShowGameOver, 1f));
+            }
         }
     }
 }

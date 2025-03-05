@@ -38,7 +38,7 @@ namespace Platformer397
             if (isPlayer == (isPlayer | (1 << other.gameObject.layer)))
             {
                 audioSource.PlayOneShot(sound);
-                StartCoroutine(Helper.Delay(playerController.Dead, 0.3f));
+                StartCoroutine(Helper.Delay(playerController.Drawn, 0.3f));
             }
         }
     }
