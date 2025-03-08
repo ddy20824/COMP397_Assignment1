@@ -39,7 +39,6 @@ namespace Platformer397
         [SerializeField] private AudioClip attackSound;
         [SerializeField] private AudioClip onCloudSound;
         [SerializeField] private int health = 5;
-        [SerializeField] private List<ItemData> inventory = new List<ItemData>();
         private Animator anim;
         private bool isTouchingGround;
         private float distToGround;
@@ -57,7 +56,6 @@ namespace Platformer397
             rb.freezeRotation = true;
             mainCam = Camera.main.transform;
             isAttacking = false;
-            EventManager.instance.AddInventory += AddInventory;
         }
 
         private void Start()
@@ -245,11 +243,6 @@ namespace Platformer397
                 anim.SetBool("IsDead", true);
                 StartCoroutine(Helper.Delay(EventManager.instance.TriggerShowGameOver, 1f));
             }
-        }
-        void AddInventory(ItemData newItem)
-        {
-            inventory.Add(newItem);
-            Debug.Log("Inventory:" + inventory.ToString());
         }
     }
 }

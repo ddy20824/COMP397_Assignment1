@@ -47,7 +47,7 @@ namespace Platformer397
             {
                 isOpen = true;
                 animator.Play("Open");
-                EventManager.instance.TriggerAddInventory(chestContent);
+                GameState.Instance.AddInventory(chestContent);
             }
         }
 

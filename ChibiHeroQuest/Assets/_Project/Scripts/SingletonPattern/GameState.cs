@@ -1,30 +1,48 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer397
 {
     public class GameState : Singleton<GameState>
     {
-        private float musicVolume;
-        private float soundVolume;
+        [SerializeField] private List<ItemData> inventory = new List<ItemData>();
+        [SerializeField] private int rescueCount = 0;
+        [SerializeField] private int collectableCount = 0;
 
-        public void SetMusicVolume(float value)
+        public List<ItemData> GetInventory()
         {
-            musicVolume = value;
+            return inventory;
+        }
+        public void AddInventory(ItemData newItem)
+        {
+            inventory.Add(newItem);
+            if (newItem == ItemData.CollectableItem)
+            {
+                collectableCount++;
+                EventManager.instance.TriggerUpdateCollectableCount(collectableCount);
+            }
         }
 
-        public float GetMusicVolume()
+        public void RemoveInventory(ItemData item)
         {
-            return musicVolume;
+            inventory.Remove(item);
+            if (item == ItemData.CollectableItem)
+            {
+                collectableCount--;
+                EventManager.instance.TriggerUpdateCollectableCount(collectableCount);
+            }
         }
 
-        public void SetSoundVolume(float value)
+        public int GetRescueCount()
         {
-            soundVolume = value;
+            return rescueCount;
         }
 
-        public float GetSoundVolume()
+        public void SetRescueCount(int newCount)
         {
-            return soundVolume;
+            rescueCount = newCount;
+            EventManager.instance.TriggerUpdateRescueCount(newCount);
+
         }
     }
 }
