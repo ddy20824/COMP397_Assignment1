@@ -60,6 +60,7 @@ namespace Platformer397
 
         private void Start()
         {
+            EventManager.instance.PlayerHeal += Heal;
             distToGround = transform.GetComponent<Collider>().bounds.extents.y;
             input.EnablePlayerActions();
             // input.LoadBinding(); // 載入上次的綁定
@@ -242,6 +243,16 @@ namespace Platformer397
                 health = 0;
                 anim.SetBool("IsDead", true);
                 StartCoroutine(Helper.Delay(EventManager.instance.TriggerShowGameOver, 1f));
+            }
+        }
+
+        void Heal()
+        {
+            if (health < 5)
+            {
+                health += 1;
+                GameState.Instance.RemoveInventory(ItemData.HealPosion);
+                EventManager.instance.TriggerUpdateHealth(health);
             }
         }
     }

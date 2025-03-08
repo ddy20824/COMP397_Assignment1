@@ -6,5 +6,6 @@ namespace Platformer397
     {
         CollectableItem,
         HealPosion,
+        None
     }
 }

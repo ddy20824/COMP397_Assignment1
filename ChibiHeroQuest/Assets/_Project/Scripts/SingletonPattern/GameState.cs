@@ -13,10 +13,10 @@ namespace Platformer397
         {
             return inventory;
         }
-        public void AddInventory(ItemData newItem)
+        public void AddInventory(ItemData item)
         {
-            inventory.Add(newItem);
-            if (newItem == ItemData.CollectableItem)
+            inventory.Add(item);
+            if (item == ItemData.CollectableItem)
             {
                 collectableCount++;
                 EventManager.instance.TriggerUpdateCollectableCount(collectableCount);

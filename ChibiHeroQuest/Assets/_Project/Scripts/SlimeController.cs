@@ -48,7 +48,7 @@ namespace Platformer397
         {
             if (Vector3.Distance(destination, transform.position) < distanceThreshold)
             {
-                int randomIndex = UnityEngine.Random.Range(0, waypoints.Count);
+                int randomIndex = UnityEngine.Random.Range(0, waypoints.Count * 10) % waypoints.Count;
                 destination = waypoints[randomIndex].position;
                 agent.SetDestination(destination);
             }

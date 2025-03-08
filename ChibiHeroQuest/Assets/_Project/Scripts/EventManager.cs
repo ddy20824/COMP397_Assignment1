@@ -13,6 +13,7 @@ namespace Platformer397
         public event Action<int> UpdateCollectableCount;
         public event Action<ItemData> AddInventory;
         public event Action ShowGameOver;
+        public event Action PlayerHeal;
 
         private void Awake()
         {
@@ -43,6 +44,10 @@ namespace Platformer397
         public void TriggerShowGameOver()
         {
             ShowGameOver?.Invoke();
+        }
+        public void TriggerHeal()
+        {
+            PlayerHeal?.Invoke();
         }
     }
 }
