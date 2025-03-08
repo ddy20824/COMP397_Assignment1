@@ -20,7 +20,6 @@ namespace Platformer397
 {
     public class MenuController : MonoBehaviour
     {
-        public GameObject startMenu;
         public GameObject optionMenu;
         public GameObject pauseMenu;
         public GameObject bagMenu;
@@ -31,8 +30,7 @@ namespace Platformer397
 
         void Awake()
         {
-            // Time.timeScale = 0;
-            // startMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
             EventManager.instance.ShowGameOver += GameOver;
         }
         void Start()
@@ -46,8 +44,12 @@ namespace Platformer397
             input.Bag += HandleBag;
             input.Pause += HandlePause;
         }
-        void Update()
+
+        private void OnDisable()
         {
+            input.Map -= HandleMap;
+            input.Bag -= HandleBag;
+            input.Pause -= HandlePause;
         }
 
         public void HandleMap()
@@ -67,25 +69,21 @@ namespace Platformer397
 
         public void HandleBag()
         {
-            if (startMenu.activeSelf == false)
+            if (!IsPauseMenuActive() && !IsMapMenuActive())
             {
-                if (!IsPauseMenuActive() && !IsMapMenuActive())
+                if (!IsBagMenuActive())
                 {
-                    if (!IsBagMenuActive())
-                    {
-                        OpenBagPanel();
-                    }
-                    else
-                    {
-                        CloseBagPanel();
-                    }
+                    OpenBagPanel();
+                }
+                else
+                {
+                    CloseBagPanel();
                 }
             }
         }
 
         public void HandlePause()
         {
-
             if (!IsBagMenuActive() && !IsOptionMenuActive() && !IsMapMenuActive())
             {
                 if (!IsPauseMenuActive())
@@ -99,25 +97,12 @@ namespace Platformer397
             }
         }
 
-        public void OpenStartPanel()
-        {
-            startMenu.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        public void CloseStartPanel()
-        {
-            startMenu.SetActive(false);
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
         public void OpenOptionPanel()
         {
             audioSource.PlayOneShot(buttonSound);
             optionMenu.SetActive(true);
         }
+
         public void OpenPausePanel()
         {
             pauseMenu.SetActive(true);
@@ -159,26 +144,13 @@ namespace Platformer397
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
         public void GameOver()
         {
             SceneController.Instance.ChangeScene("GameOver");
         }
 
-        public void NewGame()
-        {
-            audioSource.PlayOneShot(buttonSound);
-            CloseStartPanel();
-            AudioManager.Instance.PlayGamePlayMusic();
-        }
-
         public void LoadGame()
-        {
-            audioSource.PlayOneShot(buttonSound);
-            CloseStartPanel();
-            AudioManager.Instance.PlayGamePlayMusic();
-        }
-
-        public void PauseLoadGame()
         {
             audioSource.PlayOneShot(buttonSound);
             ClosePausePanel();
@@ -196,19 +168,7 @@ namespace Platformer397
         {
             audioSource.PlayOneShot(buttonSound);
             ClosePausePanel();
-            OpenStartPanel();
-            // AudioManager.Instance.PlayMainMenuMusic();
-        }
-
-        public void ExitGame()
-        {
-            audioSource.PlayOneShot(buttonSound);
-            Debug.Log("Exit Game");
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+            SceneController.Instance.ChangeScene("StartMenu");
         }
 
         private bool IsOptionMenuActive()

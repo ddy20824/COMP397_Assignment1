@@ -15,6 +15,7 @@ namespace Platformer397
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            Cursor.lockState = CursorLockMode.None;
             AudioManager.Instance.PlayMainMenuMusic();
             newGameBtn.onClick.AddListener(NewGame);
             loadGameBtn.onClick.AddListener(LoadGame);

@@ -7,7 +7,6 @@ namespace Platformer397
     {
         public void ChangeScene(string sceneName)
         {
-            Debug.Log("ChangeScene");
             SceneManager.LoadScene(sceneName);
         }
     }

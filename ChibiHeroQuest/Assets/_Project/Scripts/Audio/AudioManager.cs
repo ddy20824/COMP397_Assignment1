@@ -43,27 +43,10 @@ namespace Platformer397
                 return;
             }
         }
-        void OnDestroy()
-        {
-            StopAllCoroutines(); // Stops all running coroutines
-        }
 
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
-            // if (musicSlider != null)
-            // {
-            //     float musicVolume;
-            //     audioMixer.GetFloat("MusicVolume", out musicVolume);
-            //     musicSlider.SetValueWithoutNotify(musicVolume);
-            // }
-
-            // if (soundSlider != null)
-            // {
-            //     float soundVolume;
-            //     audioMixer.GetFloat("SoundVolume", out soundVolume);
-            //     soundSlider.SetValueWithoutNotify(soundVolume);
-            // }
         }
 
         public void PlayMainMenuMusic()
@@ -89,15 +72,5 @@ namespace Platformer397
                 audioSource.Play();
             }
         }
-
-        // public void MusicSlilderOnClick()
-        // {
-        //     audioMixer.SetFloat("MusicVolume", musicSlider.value);
-        // }
-
-        // public void SoundSlilderOnClick()
-        // {
-        //     audioMixer.SetFloat("SoundVolume", soundSlider.value);
-        // }
     }
 }
