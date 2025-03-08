@@ -25,10 +25,6 @@ namespace Platformer397
         public GameObject pauseMenu;
         public GameObject bagMenu;
         public GameObject mapMenu;
-        bool optionMenuOpen = false;
-        bool pauseMenuOpen = false;
-        bool bagMenuOpen = false;
-        bool mapMenuOpen = false;
         [SerializeField] private InputReader input;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip buttonSound;
@@ -56,18 +52,15 @@ namespace Platformer397
 
         public void HandleMap()
         {
-            if (startMenu.activeSelf == false)
+            if (!IsBagMenuActive() && !IsOptionMenuActive() && !IsPauseMenuActive())
             {
-                if (!bagMenuOpen && !optionMenuOpen && !pauseMenuOpen)
+                if (!IsMapMenuActive())
                 {
-                    if (!mapMenuOpen)
-                    {
-                        OpenMapPanel();
-                    }
-                    else
-                    {
-                        CloseMapPanel();
-                    }
+                    OpenMapPanel();
+                }
+                else
+                {
+                    CloseMapPanel();
                 }
             }
         }
@@ -76,9 +69,9 @@ namespace Platformer397
         {
             if (startMenu.activeSelf == false)
             {
-                if (!pauseMenuOpen && !mapMenuOpen)
+                if (!IsPauseMenuActive() && !IsMapMenuActive())
                 {
-                    if (!bagMenuOpen)
+                    if (!IsBagMenuActive())
                     {
                         OpenBagPanel();
                     }
@@ -92,18 +85,16 @@ namespace Platformer397
 
         public void HandlePause()
         {
-            if (startMenu.activeSelf == false)
+
+            if (!IsBagMenuActive() && !IsOptionMenuActive() && !IsMapMenuActive())
             {
-                if (!bagMenuOpen && !optionMenuOpen && !mapMenuOpen)
+                if (!IsPauseMenuActive())
                 {
-                    if (!pauseMenuOpen)
-                    {
-                        OpenPausePanel();
-                    }
-                    else
-                    {
-                        ClosePausePanel();
-                    }
+                    OpenPausePanel();
+                }
+                else
+                {
+                    ClosePausePanel();
                 }
             }
         }
@@ -126,12 +117,10 @@ namespace Platformer397
         {
             audioSource.PlayOneShot(buttonSound);
             optionMenu.SetActive(true);
-            optionMenuOpen = true;
         }
         public void OpenPausePanel()
         {
             pauseMenu.SetActive(true);
-            pauseMenuOpen = true;
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -139,7 +128,6 @@ namespace Platformer397
         public void ClosePausePanel()
         {
             pauseMenu.SetActive(false);
-            pauseMenuOpen = false;
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -147,7 +135,6 @@ namespace Platformer397
         public void OpenBagPanel()
         {
             bagMenu.SetActive(true);
-            bagMenuOpen = true;
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -155,7 +142,6 @@ namespace Platformer397
         public void CloseBagPanel()
         {
             bagMenu.SetActive(false);
-            bagMenuOpen = false;
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -163,7 +149,6 @@ namespace Platformer397
         public void OpenMapPanel()
         {
             mapMenu.SetActive(true);
-            mapMenuOpen = true;
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -171,7 +156,6 @@ namespace Platformer397
         public void CloseMapPanel()
         {
             mapMenu.SetActive(false);
-            mapMenuOpen = false;
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -225,6 +209,26 @@ namespace Platformer397
 #else
             Application.Quit();
 #endif
+        }
+
+        private bool IsOptionMenuActive()
+        {
+            return optionMenu.activeSelf;
+        }
+
+        private bool IsBagMenuActive()
+        {
+            return bagMenu.activeSelf;
+        }
+
+        private bool IsMapMenuActive()
+        {
+            return mapMenu.activeSelf;
+        }
+
+        private bool IsPauseMenuActive()
+        {
+            return pauseMenu.activeSelf;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Platformer397
         public event UnityAction Map = delegate { };
         public event UnityAction Bag = delegate { };
         public event UnityAction Pause = delegate { };
+        public event UnityAction Interact = delegate { };
 
         InputSystem_Actions input;
         private void OnEnable()
@@ -69,7 +70,17 @@ namespace Platformer397
                     break;
             }
         }
-        public void OnInteract(InputAction.CallbackContext context) { }
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    Interact?.Invoke();
+                    break;
+                default:
+                    break;
+            }
+        }
         public void OnCrouch(InputAction.CallbackContext context) { }
         public void OnJump(InputAction.CallbackContext context)
         {

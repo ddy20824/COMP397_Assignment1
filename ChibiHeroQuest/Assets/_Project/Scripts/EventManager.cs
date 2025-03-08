@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer397
@@ -7,8 +8,8 @@ namespace Platformer397
     {
         public static EventManager instance;
         public event Action LoadingActiveEvent;
-
         public event Action<int> UpdateHealth;
+        public event Action<ItemData> AddInventory;
         public event Action ShowGameOver;
 
         private void Awake()
@@ -20,6 +21,11 @@ namespace Platformer397
         public void TriggerUpdateHealth(int health)
         {
             UpdateHealth?.Invoke(health);
+        }
+
+        public void TriggerAddInventory(ItemData newItem)
+        {
+            AddInventory?.Invoke(newItem);
         }
 
         public void TriggerShowGameOver()

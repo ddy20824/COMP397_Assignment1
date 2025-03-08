@@ -23,7 +23,6 @@ namespace Platformer397
     {
         public static AudioManager Instance;
 
-        [SerializeField] AudioMixer audioMixer;
         [SerializeField] private AudioSource audioSource;
         public AudioClip mainMenuMusic;
         public AudioClip gamePlayMusic;
