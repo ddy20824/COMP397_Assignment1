@@ -74,7 +74,7 @@ namespace Platformer397
         {
             input.Move -= GetMovement;
             input.Jump -= HandleJump;
-            input.Attack += HandleAttack;
+            input.Attack -= HandleAttack;
         }
 
         private void OnDestroy()

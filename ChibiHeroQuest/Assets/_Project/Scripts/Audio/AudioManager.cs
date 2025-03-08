@@ -19,12 +19,12 @@ using UnityEngine.UI;
 
 namespace Platformer397
 {
-    public class GameManager : MonoBehaviour
+    public class AudioManager : MonoBehaviour
     {
-        public static GameManager Instance;
+        public static AudioManager Instance;
 
         [SerializeField] AudioMixer audioMixer;
-        public AudioSource audioSource;
+        [SerializeField] private AudioSource audioSource;
         public AudioClip mainMenuMusic;
         public AudioClip gamePlayMusic;
         public AudioClip gameOverMusic;
@@ -44,18 +44,27 @@ namespace Platformer397
                 return;
             }
         }
+        void OnDestroy()
+        {
+            StopAllCoroutines(); // Stops all running coroutines
+        }
 
         void Start()
         {
-            PlayMainMenuMusic();
+            audioSource = GetComponent<AudioSource>();
+            // if (musicSlider != null)
+            // {
+            //     float musicVolume;
+            //     audioMixer.GetFloat("MusicVolume", out musicVolume);
+            //     musicSlider.SetValueWithoutNotify(musicVolume);
+            // }
 
-            float musicVolume;
-            audioMixer.GetFloat("MusicVolume", out musicVolume);
-            musicSlider.SetValueWithoutNotify(musicVolume);
-
-            float soundVolume;
-            audioMixer.GetFloat("SoundVolume", out soundVolume);
-            soundSlider.SetValueWithoutNotify(soundVolume);
+            // if (soundSlider != null)
+            // {
+            //     float soundVolume;
+            //     audioMixer.GetFloat("SoundVolume", out soundVolume);
+            //     soundSlider.SetValueWithoutNotify(soundVolume);
+            // }
         }
 
         public void PlayMainMenuMusic()
@@ -82,14 +91,14 @@ namespace Platformer397
             }
         }
 
-        public void MusicSlilderOnClick()
-        {
-            audioMixer.SetFloat("MusicVolume", musicSlider.value);
-        }
+        // public void MusicSlilderOnClick()
+        // {
+        //     audioMixer.SetFloat("MusicVolume", musicSlider.value);
+        // }
 
-        public void SoundSlilderOnClick()
-        {
-            audioMixer.SetFloat("SoundVolume", soundSlider.value);
-        }
+        // public void SoundSlilderOnClick()
+        // {
+        //     audioMixer.SetFloat("SoundVolume", soundSlider.value);
+        // }
     }
 }

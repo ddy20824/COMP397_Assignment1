@@ -9,34 +9,34 @@ EditorUserSettings:
       value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b07a68ffab74f9ee2a3a30300cea1a11320d0beb1a0c25f7060f494b4cc80018eb09361fc211cb1f862d19c51d19dcc413d6ade0d8ddfcddf9f4d9d29195fcfde6ebeae6f0a9c9afa6f8c5b89ff7a1aacececac4eba4d7c9d28bda
       flags: 0
     RecentlyUsedSceneGuid-0:
-      value: 5402060200530a5958580f7042735e44414f1d2f2e7d71692e7f4d63e6e1676c
-      flags: 0
-    RecentlyUsedSceneGuid-1:
-      value: 5202055f5156500a0b5c5a7644715947174e4b2c7a2b22362c7e196ae1e56c3e
-      flags: 0
-    RecentlyUsedSceneGuid-2:
       value: 5608055607505e5a5e0c5b7211260b4442161d2f7b2b73352e701837b0e5646a
       flags: 0
-    RecentlyUsedSceneGuid-3:
-      value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
-      flags: 0
-    RecentlyUsedSceneGuid-4:
+    RecentlyUsedSceneGuid-1:
       value: 05070d5f50535d5e0c0c5472427008444e4e1b2f7a7170622e784e37bab3636a
       flags: 0
-    RecentlyUsedSceneGuid-5:
+    RecentlyUsedSceneGuid-2:
       value: 51090d5f510750595a5e0823417a5d44461540727b7c73367c7d1f61b6b9376b
       flags: 0
-    RecentlyUsedSceneGuid-6:
+    RecentlyUsedSceneGuid-3:
       value: 010806555d0150035e0b597211775d4147154c7b742a7663287a1f61bbb5366f
       flags: 0
-    RecentlyUsedSceneGuid-7:
+    RecentlyUsedSceneGuid-4:
       value: 5450045250530d0b545f5c2716775b44404e48797a2d76317e2b4837bbb23568
       flags: 0
-    RecentlyUsedSceneGuid-8:
+    RecentlyUsedSceneGuid-5:
       value: 52570d0452505b0f0b58582345775947154e4d7f7c79273279791c37e3b7366e
       flags: 0
-    RecentlyUsedSceneGuid-9:
+    RecentlyUsedSceneGuid-6:
+      value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5509575652045d5e5c5b0a74437b0a44434f4e7a2f7170337f2f4930e7b93669
+      flags: 0
+    RecentlyUsedSceneGuid-8:
       value: 070550030650080c09590d75482009444f164f787c7871697f794a65bab1353b
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 025706055501505e0c5f5f7740735c441016402b2d2a2735287d1f36e0b36c6b
       flags: 0
     lightmappingBakingProfile:
       value: 51

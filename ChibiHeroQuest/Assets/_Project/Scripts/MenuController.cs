@@ -14,6 +14,7 @@
  * - 2025-02-23: Add Cursor Lock/None, HandleMap/HandleBag/HandlePause, buttonSound
  */
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Platformer397
 {
@@ -24,7 +25,6 @@ namespace Platformer397
         public GameObject pauseMenu;
         public GameObject bagMenu;
         public GameObject mapMenu;
-        public GameObject endMenu;
         bool optionMenuOpen = false;
         bool pauseMenuOpen = false;
         bool bagMenuOpen = false;
@@ -35,9 +35,13 @@ namespace Platformer397
 
         void Awake()
         {
-            Time.timeScale = 0;
-            startMenu.SetActive(true);
-            EventManager.instance.ShowGameOver += OpenEndPanel;
+            // Time.timeScale = 0;
+            // startMenu.SetActive(true);
+            EventManager.instance.ShowGameOver += GameOver;
+        }
+        void Start()
+        {
+            AudioManager.Instance.PlayGamePlayMusic();
         }
 
         void OnEnable()
@@ -48,13 +52,6 @@ namespace Platformer397
         }
         void Update()
         {
-            if (startMenu.activeSelf == false)
-            {
-                if (Input.GetKeyDown(KeyCode.G) && !bagMenuOpen && !optionMenuOpen && !pauseMenuOpen && !bagMenuOpen)
-                {
-                    OpenEndPanel();
-                }
-            }
         }
 
         public void HandleMap()
@@ -131,12 +128,6 @@ namespace Platformer397
             optionMenu.SetActive(true);
             optionMenuOpen = true;
         }
-
-        public void CloseOptionPanel()
-        {
-            optionMenu.SetActive(false);
-            optionMenuOpen = false;
-        }
         public void OpenPausePanel()
         {
             pauseMenu.SetActive(true);
@@ -184,48 +175,37 @@ namespace Platformer397
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
-
-        public void OpenEndPanel()
+        public void GameOver()
         {
-            endMenu.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            GameManager.Instance.PlayGameOverMusic();
-        }
-
-        public void CloseEndPanel()
-        {
-            endMenu.SetActive(false);
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
+            SceneController.Instance.ChangeScene("GameOver");
         }
 
         public void NewGame()
         {
             audioSource.PlayOneShot(buttonSound);
             CloseStartPanel();
-            GameManager.Instance.PlayGamePlayMusic();
+            AudioManager.Instance.PlayGamePlayMusic();
         }
 
         public void LoadGame()
         {
             audioSource.PlayOneShot(buttonSound);
             CloseStartPanel();
-            GameManager.Instance.PlayGamePlayMusic();
+            AudioManager.Instance.PlayGamePlayMusic();
         }
 
         public void PauseLoadGame()
         {
             audioSource.PlayOneShot(buttonSound);
             ClosePausePanel();
-            GameManager.Instance.PlayGamePlayMusic();
+            AudioManager.Instance.PlayGamePlayMusic();
         }
 
         public void SaveGame()
         {
             audioSource.PlayOneShot(buttonSound);
             ClosePausePanel();
-            GameManager.Instance.PlayGamePlayMusic();
+            AudioManager.Instance.PlayGamePlayMusic();
         }
 
         public void BackToMenu()
@@ -233,7 +213,7 @@ namespace Platformer397
             audioSource.PlayOneShot(buttonSound);
             ClosePausePanel();
             OpenStartPanel();
-            GameManager.Instance.PlayMainMenuMusic();
+            // AudioManager.Instance.PlayMainMenuMusic();
         }
 
         public void ExitGame()
@@ -245,16 +225,6 @@ namespace Platformer397
 #else
             Application.Quit();
 #endif
-        }
-
-        public void MusicSliderOnClick()
-        {
-            GameManager.Instance.MusicSlilderOnClick();
-        }
-
-        public void SoundSlilderOnClick()
-        {
-            GameManager.Instance.SoundSlilderOnClick();
         }
     }
 }
