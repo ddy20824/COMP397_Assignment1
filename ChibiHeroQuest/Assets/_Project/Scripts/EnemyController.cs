@@ -17,7 +17,7 @@ using UnityEngine.AI;
 
 namespace Platformer397
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, IDataPersistent
     {
         [SerializeField] protected List<Transform> waypoints = new List<Transform>();
         [SerializeField] protected GameObject player;
@@ -74,12 +74,25 @@ namespace Platformer397
             audioSource.PlayOneShot(deadSound);
             alreadyAttacked = true;
             anim.SetBool("IsDead", true);
+            GameState.Instance.SetEnemyName(name);
             Invoke(nameof(DestroyEnemy), 1f);
         }
 
         private void DestroyEnemy()
         {
             Destroy(gameObject);
+        }
+
+        public void LoadData(GameState data)
+        {
+            if (GameState.Instance.CheckEnemyNameExist(name))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void SaveData()
+        {
         }
     }
 }

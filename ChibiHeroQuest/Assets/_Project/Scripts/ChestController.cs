@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace Platformer397
 {
-    public class ChestController : MonoBehaviour
+    public class ChestController : MonoBehaviour, IDataPersistent
     {
         [SerializeField] private string playerTag = "Player";
         [SerializeField] private bool isOpen { get; set; }
@@ -48,6 +48,7 @@ namespace Platformer397
                 isOpen = true;
                 animator.Play("Open");
                 GameState.Instance.AddInventory(chestContent);
+                GameState.Instance.SetChestBoxName(name);
             }
         }
 
@@ -74,6 +75,21 @@ namespace Platformer397
             {
                 Open();
             }
+        }
+
+        public void LoadData(GameState data)
+        {
+            if (GameState.Instance.CheckChestBoxNameExist(name))
+            {
+                isOpen = true;
+                if (animator == null)
+                    animator = GetComponent<Animator>();
+                animator.Play("Open");
+            }
+        }
+
+        public void SaveData()
+        {
         }
     }
 }

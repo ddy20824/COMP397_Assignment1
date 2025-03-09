@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Platformer397
 {
-    public class DestructibleObject : MonoBehaviour
+    public class DestructibleObject : MonoBehaviour, IDataPersistent
     {
         [SerializeField] private GameObject debrisPrefab;
         [SerializeField] private AudioClip audioClip;
@@ -57,6 +57,19 @@ namespace Platformer397
             Destroy(gameObject);
 
             gamestate.SetRescueCount(gamestate.GetRescueCount() + 1);
+            gamestate.SetDestructibleObjectName(name);
+        }
+
+        public void LoadData(GameState data)
+        {
+            if (GameState.Instance.CheckDestructibleObjectNameExist(name))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void SaveData()
+        {
         }
     }
 }

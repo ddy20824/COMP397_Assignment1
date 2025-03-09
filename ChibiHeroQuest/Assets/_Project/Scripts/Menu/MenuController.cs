@@ -99,7 +99,7 @@ namespace Platformer397
 
         public void OpenOptionPanel()
         {
-            audioSource.PlayOneShot(buttonSound);
+            playButtonSound();
             optionMenu.SetActive(true);
         }
 
@@ -152,23 +152,30 @@ namespace Platformer397
 
         public void LoadGame()
         {
-            audioSource.PlayOneShot(buttonSound);
+            playButtonSound();
+            DataPersistentManager.Instance.LoadGame();
             ClosePausePanel();
             AudioManager.Instance.PlayGamePlayMusic();
         }
 
         public void SaveGame()
         {
-            audioSource.PlayOneShot(buttonSound);
+            playButtonSound();
+            DataPersistentManager.Instance.SaveGame();
             ClosePausePanel();
             AudioManager.Instance.PlayGamePlayMusic();
         }
 
         public void BackToMenu()
         {
-            audioSource.PlayOneShot(buttonSound);
+            playButtonSound();
             ClosePausePanel();
             SceneController.Instance.ChangeScene("StartMenu");
+        }
+
+        private void playButtonSound()
+        {
+            audioSource.PlayOneShot(buttonSound);
         }
 
         private bool IsOptionMenuActive()

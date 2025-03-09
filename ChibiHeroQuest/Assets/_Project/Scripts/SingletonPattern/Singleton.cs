@@ -4,7 +4,7 @@ namespace Platformer397
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {
-        public bool AutoUnparentOnAwake = true;
+        public static bool AutoUnparentOnAwake = true;
         protected static T instance;
         public static bool HasInstance => HasInstance ? instance : null;
         public static T TryGetInstance() => HasInstance ? instance : null;

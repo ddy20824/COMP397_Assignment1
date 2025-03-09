@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Platformer397
 {
-    public class ForestGroundFallingController : MonoBehaviour
+    public class ForestGroundFallingController : MonoBehaviour, IDataPersistent
     {
         public LayerMask isPlayer;
 
@@ -23,6 +23,7 @@ namespace Platformer397
         {
             if (isPlayer == (isPlayer | (1 << collision.gameObject.layer)))
             {
+                GameState.Instance.SetFallingGroundName(name);
                 StartCoroutine(Helper.Delay(AddRigidbody, 0.5f));
             }
         }
@@ -30,7 +31,22 @@ namespace Platformer397
         private void AddRigidbody()
         {
             if (gameObject.GetComponent<Rigidbody>() == null)
+            {
                 gameObject.AddComponent<Rigidbody>();
+                StartCoroutine(Helper.Delay(() => { gameObject.SetActive(false); }, 1.0f));
+            }
+        }
+
+        public void LoadData(GameState data)
+        {
+            if (GameState.Instance.CheckFallingGroundNameExist(name))
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        public void SaveData()
+        {
         }
     }
 }

@@ -49,5 +49,10 @@ namespace Platformer397
         {
             PlayerHeal?.Invoke();
         }
+
+        public void TriggerLoadingActive()
+        {
+            LoadingActiveEvent?.Invoke();
+        }
     }
 }

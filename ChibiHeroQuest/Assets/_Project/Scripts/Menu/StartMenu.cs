@@ -23,27 +23,32 @@ namespace Platformer397
             ExitBtn.onClick.AddListener(ExitGame);
         }
 
-        public void NewGame()
+        private void playButtonSound()
         {
             audioSource.PlayOneShot(buttonSound);
-            SceneController.Instance.ChangeScene("MainScene");
+        }
+
+        public void NewGame()
+        {
+            playButtonSound();
+            DataPersistentManager.Instance.NewGame();
         }
 
         public void LoadGame()
         {
-            audioSource.PlayOneShot(buttonSound);
-            SceneController.Instance.ChangeScene("MainScene");
+            playButtonSound();
+            DataPersistentManager.Instance.LoadGame();
         }
 
         public void Options()
         {
-            audioSource.PlayOneShot(buttonSound);
+            playButtonSound();
             optionMenu.SetActive(true);
         }
 
         public void ExitGame()
         {
-            audioSource.PlayOneShot(buttonSound);
+            playButtonSound();
             Debug.Log("Exit Game");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

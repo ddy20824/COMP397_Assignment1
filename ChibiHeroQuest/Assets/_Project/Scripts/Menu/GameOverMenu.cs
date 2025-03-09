@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,18 +8,35 @@ namespace Platformer397
     {
         [SerializeField] private Button restartGameBtn;
         [SerializeField] private Button menuGameBtn;
+        [SerializeField] private TMP_Text rescueText;
+        [SerializeField] private TMP_Text collectableText;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip buttonSound;
         void Start()
         {
             AudioManager.Instance.PlayGameOverMusic();
             Cursor.lockState = CursorLockMode.None;
-            restartGameBtn.onClick.AddListener(() => { SceneController.Instance.ChangeScene("MainScene"); });
-            menuGameBtn.onClick.AddListener(() => { SceneController.Instance.ChangeScene("StartMenu"); });
+            restartGameBtn.onClick.AddListener(NewGame);
+            menuGameBtn.onClick.AddListener(BackToMenu);
+            rescueText.text = GameState.Instance.GetRescueCount().ToString();
+            collectableText.text = GameState.Instance.GetCollectableCount().ToString();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void playButtonSound()
         {
+            audioSource.PlayOneShot(buttonSound);
+        }
 
+        public void NewGame()
+        {
+            playButtonSound();
+            DataPersistentManager.Instance.NewGame();
+        }
+
+        public void BackToMenu()
+        {
+            playButtonSound();
+            SceneController.Instance.ChangeScene("StartMenu");
         }
     }
 }

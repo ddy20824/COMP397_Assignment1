@@ -22,7 +22,7 @@ using System;
 namespace Platformer397
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IDataPersistent
     {
         [SerializeField] private InputReader input;
         [SerializeField] private Rigidbody rb;
@@ -254,6 +254,19 @@ namespace Platformer397
                 GameState.Instance.RemoveInventory(ItemData.HealPosion);
                 EventManager.instance.TriggerUpdateHealth(health);
             }
+        }
+
+        public void LoadData(GameState data)
+        {
+            transform.position = data.GetPlayerPosition();
+            health = data.GetPlayerHealth();
+            EventManager.instance.TriggerUpdateHealth(health);
+        }
+
+        public void SaveData()
+        {
+            GameState.Instance.SetPlayerPosition(transform.position);
+            GameState.Instance.SetPlayerHealth(health);
         }
     }
 }
