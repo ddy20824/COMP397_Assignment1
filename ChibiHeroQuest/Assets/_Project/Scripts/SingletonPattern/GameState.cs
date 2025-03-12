@@ -16,6 +16,7 @@ namespace Platformer397
         [SerializeField] private string[] recordFallingGroundName;
         [SerializeField] private Vector3 playerPosition;
         [SerializeField] private int health;
+        [SerializeField] private bool isWin = false;
         private HashSet<string> chestBoxName;
         private HashSet<string> destuctibleObjectName;
         private HashSet<string> enemyName;
@@ -166,6 +167,16 @@ namespace Platformer397
         public bool CheckFallingGroundNameExist(string name)
         {
             return recordFallingGroundName.Contains(name);
+        }
+
+        public void SetIsWin(bool win)
+        {
+            isWin = win;
+        }
+
+        public bool GetIsWin()
+        {
+            return isWin;
         }
     }
 }

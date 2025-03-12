@@ -187,7 +187,17 @@ namespace Platformer397
                 TakeDamage();
             }
         }
-
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Goal")
+            {
+                transform.localRotation = new Quaternion(0, 0, 0, 0);
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                anim.SetTrigger("Victory");
+                GameState.Instance.SetIsWin(true);
+                StartCoroutine(Helper.Delay(EventManager.instance.TriggerShowGameOver, 3f));
+            }
+        }
         void OnTriggerStay(Collider other)
         {
             if (isAttacking)
@@ -242,6 +252,7 @@ namespace Platformer397
             {
                 health = 0;
                 anim.SetBool("IsDead", true);
+                GameState.Instance.SetIsWin(false);
                 StartCoroutine(Helper.Delay(EventManager.instance.TriggerShowGameOver, 1f));
             }
         }

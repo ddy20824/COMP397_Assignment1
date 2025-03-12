@@ -12,6 +12,8 @@ namespace Platformer397
         [SerializeField] private TMP_Text collectableText;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip buttonSound;
+        [SerializeField] private GameObject winSubTitle;
+        [SerializeField] private GameObject loseSubTitle;
         void Start()
         {
             AudioManager.Instance.PlayGameOverMusic();
@@ -20,6 +22,9 @@ namespace Platformer397
             menuGameBtn.onClick.AddListener(BackToMenu);
             rescueText.text = GameState.Instance.GetRescueCount().ToString();
             collectableText.text = GameState.Instance.GetCollectableCount().ToString();
+            var isWin = GameState.Instance.GetIsWin();
+            winSubTitle.SetActive(isWin);
+            loseSubTitle.SetActive(!isWin);
         }
 
         private void playButtonSound()
