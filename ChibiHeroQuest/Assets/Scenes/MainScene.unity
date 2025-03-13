@@ -13979,6 +13979,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 43a6705e2a3ab964f955fd374ae9797e, type: 2}
   musicSlider: {fileID: 182917506}
   soundSlider: {fileID: 2025186235}
+  audioSource: {fileID: 2054124124}
+  buttonSound: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
 --- !u!114 &737811804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15047,6 +15049,9 @@ MonoBehaviour:
   playerTag: Player
   chestContent: 0
   input: {fileID: 11400000, guid: eb9a0099e8a9f9245afb7d1c598ca317, type: 2}
+  audioSource: {fileID: 2054124124}
+  openSound: {fileID: 8300000, guid: abdbbfd33a46f4549987385f85c536b5, type: 3}
+  closeSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
 --- !u!1001 &824414478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17789,7 +17794,7 @@ GameObject:
   - component: {fileID: 966411584}
   - component: {fileID: 966411586}
   - component: {fileID: 966411585}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18644,6 +18649,9 @@ MonoBehaviour:
   playerTag: Player
   chestContent: 0
   input: {fileID: 11400000, guid: eb9a0099e8a9f9245afb7d1c598ca317, type: 2}
+  audioSource: {fileID: 2054124124}
+  openSound: {fileID: 8300000, guid: abdbbfd33a46f4549987385f85c536b5, type: 3}
+  closeSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
 --- !u!1001 &1009270814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23136,6 +23144,9 @@ MonoBehaviour:
   playerTag: Player
   chestContent: 1
   input: {fileID: 11400000, guid: eb9a0099e8a9f9245afb7d1c598ca317, type: 2}
+  audioSource: {fileID: 2054124124}
+  openSound: {fileID: 8300000, guid: abdbbfd33a46f4549987385f85c536b5, type: 3}
+  closeSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
 --- !u!1001 &1170906890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27839,6 +27850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healSprite: {fileID: 788001970, guid: 0cf2a15b2881f0e46ba658ea18d2f753, type: 3}
   CollectSprite: {fileID: -1576271017, guid: cac6c3d852612884d9587c90ff249fd5, type: 3}
+  audioSource: {fileID: 2054124124}
+  usedSound: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
 --- !u!1001 &1353458685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28022,6 +28035,9 @@ MonoBehaviour:
   playerTag: Player
   chestContent: 0
   input: {fileID: 11400000, guid: eb9a0099e8a9f9245afb7d1c598ca317, type: 2}
+  audioSource: {fileID: 2054124124}
+  openSound: {fileID: 8300000, guid: abdbbfd33a46f4549987385f85c536b5, type: 3}
+  closeSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
 --- !u!1 &1375768127
 GameObject:
   m_ObjectHideFlags: 0
@@ -28441,9 +28457,9 @@ RectTransform:
   - {fileID: 1542147704}
   m_Father: {fileID: 1499467554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -370}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -80, y: 80}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1400499385
@@ -35112,6 +35128,9 @@ MonoBehaviour:
   playerTag: Player
   chestContent: 1
   input: {fileID: 11400000, guid: eb9a0099e8a9f9245afb7d1c598ca317, type: 2}
+  audioSource: {fileID: 2054124124}
+  openSound: {fileID: 8300000, guid: abdbbfd33a46f4549987385f85c536b5, type: 3}
+  closeSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
 --- !u!1 &1736263300
 GameObject:
   m_ObjectHideFlags: 0
@@ -35238,7 +35257,7 @@ GameObject:
   - component: {fileID: 1747613149}
   - component: {fileID: 1747613148}
   - component: {fileID: 1747613147}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CanvasMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37555,7 +37574,7 @@ GameObject:
   - component: {fileID: 1847450352}
   - component: {fileID: 1847450356}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: MiniMapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37644,7 +37663,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 375
+    m_Bits: 887
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 8850e337db9e5974390d3a19c1f6bd10, type: 2}
   m_TargetDisplay: 0
@@ -40880,7 +40899,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -41175,6 +41194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healSprite: {fileID: 788001970, guid: 0cf2a15b2881f0e46ba658ea18d2f753, type: 3}
   CollectSprite: {fileID: -1576271017, guid: cac6c3d852612884d9587c90ff249fd5, type: 3}
+  audioSource: {fileID: 2054124124}
+  usedSound: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
 --- !u!1001 &2010957441
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ namespace Platformer397
     {
         [SerializeField] private Sprite healSprite;
         [SerializeField] private Sprite CollectSprite;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip usedSound;
         private ItemData itemType = ItemData.None;
         private int itemNum = 0;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,6 +43,7 @@ namespace Platformer397
         {
             if (itemType == ItemData.HealPosion)
             {
+                audioSource.PlayOneShot(usedSound);
                 EventManager.instance.TriggerHeal();
                 itemNum--;
                 if (itemNum == 0)

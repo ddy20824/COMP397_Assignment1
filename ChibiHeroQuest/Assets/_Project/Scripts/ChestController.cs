@@ -23,6 +23,9 @@ namespace Platformer397
         [SerializeField] private bool isOpen { get; set; }
         [SerializeField] private ItemData chestContent;
         [SerializeField] private InputReader input;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip openSound;
+        [SerializeField] private AudioClip closeSound;
         private bool isPlayerAround;
         private Animator animator;
 
@@ -47,6 +50,7 @@ namespace Platformer397
             {
                 isOpen = true;
                 animator.Play("Open");
+                audioSource.PlayOneShot(openSound);
                 GameState.Instance.AddInventory(chestContent);
                 GameState.Instance.SetChestBoxName(name);
             }
@@ -58,6 +62,7 @@ namespace Platformer397
             {
                 isOpen = false;
                 animator.Play("Close");
+                audioSource.PlayOneShot(closeSound);
             }
         }
 

@@ -4639,6 +4639,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 43a6705e2a3ab964f955fd374ae9797e, type: 2}
   musicSlider: {fileID: 633671134}
   soundSlider: {fileID: 1791378956}
+  audioSource: {fileID: 828676620}
+  buttonSound: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
 --- !u!1 &822214736
 GameObject:
   m_ObjectHideFlags: 0

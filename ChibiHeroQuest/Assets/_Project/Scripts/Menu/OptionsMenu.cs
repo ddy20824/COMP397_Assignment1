@@ -9,8 +9,9 @@ namespace Platformer397
         [SerializeField] AudioMixer audioMixer;
         [SerializeField] Slider musicSlider;
         [SerializeField] Slider soundSlider;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip buttonSound;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             if (musicSlider != null)
@@ -41,6 +42,12 @@ namespace Platformer397
         public void CloseOptionPanel()
         {
             gameObject.SetActive(false);
+            playButtonSound();
+        }
+
+        private void playButtonSound()
+        {
+            audioSource.PlayOneShot(buttonSound);
         }
     }
 }
