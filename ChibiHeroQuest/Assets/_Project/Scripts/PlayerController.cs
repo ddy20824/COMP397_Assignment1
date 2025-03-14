@@ -45,7 +45,7 @@ namespace Platformer397
         private bool isAttacking;
         private bool isDamaging;
         private bool isDrawn;
-        private int bouncyMag = 1;
+        private float bouncyMag = 1;
         private Vector3 initLocation = new Vector3(-3f, 8f, 20f);
         private Quaternion initQuaternion = new Quaternion(0, 180, 0, 0);
 
@@ -184,7 +184,7 @@ namespace Platformer397
             if (isCloud == (isCloud | (1 << collision.gameObject.layer)))
             {
                 audioSource.PlayOneShot(onCloudSound);
-                bouncyMag = 2;
+                bouncyMag = 2.5f;
             }
             else
             {

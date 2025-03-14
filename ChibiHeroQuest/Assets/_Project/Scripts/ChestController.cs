@@ -13,6 +13,7 @@
  */
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Platformer397
@@ -28,6 +29,8 @@ namespace Platformer397
         [SerializeField] private AudioClip closeSound;
         private bool isPlayerAround;
         private Animator animator;
+        private GameObject chestDisplayContent;
+        private float contentDisplayTime = 3f;
 
         void OnEnable()
         {
@@ -41,6 +44,7 @@ namespace Platformer397
         void Start()
         {
             animator = GetComponent<Animator>();
+            chestDisplayContent = findChildByTag(transform, "ChestContent");
             input.EnablePlayerActions();
         }
 
@@ -53,6 +57,12 @@ namespace Platformer397
                 audioSource.PlayOneShot(openSound);
                 GameState.Instance.AddInventory(chestContent);
                 GameState.Instance.SetChestBoxName(name);
+
+                if (chestDisplayContent != null)
+                {
+                    chestDisplayContent.SetActive(true);
+                    StartCoroutine(Helper.Delay(() => { chestDisplayContent.SetActive(false); }, contentDisplayTime));
+                }
             }
         }
 
@@ -80,6 +90,21 @@ namespace Platformer397
             {
                 Open();
             }
+        }
+
+        private GameObject findChildByTag(Transform parent, string inputTag)
+        {
+            GameObject childWithTag = null;
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                if (parent.GetChild(i).CompareTag(inputTag))
+                {
+                    childWithTag = parent.GetChild(i).gameObject;
+                    break;
+                }
+            }
+
+            return childWithTag;
         }
 
         public void LoadData(GameState data)
