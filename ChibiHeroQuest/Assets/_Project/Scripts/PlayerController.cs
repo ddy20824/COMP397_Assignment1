@@ -38,6 +38,7 @@ namespace Platformer397
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip attackSound;
         [SerializeField] private AudioClip onCloudSound;
+        [SerializeField] private AudioClip fallSound;
         [SerializeField] private int health = 5;
         private Animator anim;
         private bool isTouchingGround;
@@ -95,6 +96,7 @@ namespace Platformer397
         {
             if (transform.position.y < fallHeight)
             {
+                audioSource.PlayOneShot(fallSound);
                 ReduceHealth();
                 Reset();
             }
