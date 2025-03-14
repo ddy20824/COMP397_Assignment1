@@ -19519,7 +19519,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   sightRange: 10
-  attackRange: 1
+  attackRange: 0.45
 --- !u!195 &984861712
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -28740,10 +28740,10 @@ PrefabInstance:
       addedObject: {fileID: 1930353714}
     - targetCorrespondingSourceObject: {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1930353717}
+      addedObject: {fileID: 1930353716}
     - targetCorrespondingSourceObject: {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1930353716}
+      addedObject: {fileID: 1930353717}
   m_SourcePrefab: {fileID: 100100000, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
 --- !u!1001 &1330081617
 PrefabInstance:
@@ -41164,7 +41164,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   sightRange: 10
-  attackRange: 1
+  attackRange: 0.45
 --- !u!195 &1930353715
 NavMeshAgent:
   m_ObjectHideFlags: 0

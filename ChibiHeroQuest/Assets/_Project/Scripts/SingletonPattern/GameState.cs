@@ -7,7 +7,7 @@ namespace Platformer397
 {
     public class GameState : Singleton<GameState>
     {
-        [SerializeField] private List<ItemData> inventory = new List<ItemData>();
+        [SerializeField] private List<ItemData> inventory;
         [SerializeField] private int rescueCount = 0;
         [SerializeField] private int collectableCount = 0;
         [SerializeField] private string[] recordChestBoxName;
@@ -33,6 +33,7 @@ namespace Platformer397
             enemyName = new HashSet<string>();
             fallingGroundName = new HashSet<string>();
             CastHashSetToArray();
+            inventory = new List<ItemData>();
         }
 
         public void ResetGameState()
@@ -45,6 +46,7 @@ namespace Platformer397
             destuctibleObjectName = new HashSet<string>();
             enemyName = new HashSet<string>();
             fallingGroundName = new HashSet<string>();
+            inventory = new List<ItemData>();
         }
 
         public void UpdateGameUI()
