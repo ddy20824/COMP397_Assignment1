@@ -6,6 +6,7 @@ namespace Platformer397
 {
     public class BagController : MonoBehaviour
     {
+
         [SerializeField] private List<Button> buttons;
         void OnEnable()
         {
@@ -20,7 +21,7 @@ namespace Platformer397
         // Update is called once per frame
         void Update()
         {
-
+           
         }
 
         void Clear()
@@ -48,6 +49,7 @@ namespace Platformer397
             if (collectNum > 0)
             {
                 buttons[index].GetComponent<BagItemController>().UpdateItem(ItemData.CollectableItem, collectNum);
+
             }
         }
     }

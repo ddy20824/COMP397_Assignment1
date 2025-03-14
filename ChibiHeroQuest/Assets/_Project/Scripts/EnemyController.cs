@@ -11,6 +11,7 @@
  * - 2025-02-23: Add enemy die while being attacked.
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -93,6 +94,11 @@ namespace Platformer397
 
         public void SaveData()
         {
+        }
+
+        public static implicit operator EnemyController(int v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
