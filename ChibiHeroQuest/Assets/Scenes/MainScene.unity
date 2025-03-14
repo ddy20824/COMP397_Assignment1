@@ -5961,6 +5961,9 @@ MonoBehaviour:
   isCloud:
     serializedVersion: 2
     m_Bits: 256
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   fallHeight: -8
   audioSource: {fileID: 2054124124}
   attackSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
@@ -23177,7 +23180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 4.145
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29393,8 +29396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425c515177daa6947aadc5ca6b2aa82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healSprite: {fileID: 788001970, guid: 0cf2a15b2881f0e46ba658ea18d2f753, type: 3}
-  CollectSprite: {fileID: -1576271017, guid: cac6c3d852612884d9587c90ff249fd5, type: 3}
+  healSprite: {fileID: -1576271017, guid: cac6c3d852612884d9587c90ff249fd5, type: 3}
+  CollectSprite: {fileID: -1761516543, guid: 098fe0b36d0ce7b4b91749b9e6cbd843, type: 3}
   audioSource: {fileID: 2054124124}
   usedSound: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
 --- !u!1001 &1353458685
@@ -43488,8 +43491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425c515177daa6947aadc5ca6b2aa82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healSprite: {fileID: 788001970, guid: 0cf2a15b2881f0e46ba658ea18d2f753, type: 3}
-  CollectSprite: {fileID: -1576271017, guid: cac6c3d852612884d9587c90ff249fd5, type: 3}
+  healSprite: {fileID: -1576271017, guid: cac6c3d852612884d9587c90ff249fd5, type: 3}
+  CollectSprite: {fileID: -1761516543, guid: 098fe0b36d0ce7b4b91749b9e6cbd843, type: 3}
   audioSource: {fileID: 2054124124}
   usedSound: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
 --- !u!1001 &2010957441

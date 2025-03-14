@@ -30,7 +30,7 @@ namespace Platformer397
         private bool isPlayerAround;
         private Animator animator;
         private GameObject chestDisplayContent;
-        private float contentDisplayTime = 3f;
+        private float contentDisplayTime = 2f;
 
         void OnEnable()
         {
@@ -60,8 +60,7 @@ namespace Platformer397
 
                 if (chestDisplayContent != null)
                 {
-                    chestDisplayContent.SetActive(true);
-                    StartCoroutine(Helper.Delay(() => { chestDisplayContent.SetActive(false); }, contentDisplayTime));
+                    StartCoroutine(Helper.Delay(ShowChestDisplayContent, 0.3f));
                 }
             }
         }
@@ -90,6 +89,12 @@ namespace Platformer397
             {
                 Open();
             }
+        }
+
+        private void ShowChestDisplayContent()
+        {
+            chestDisplayContent.SetActive(true);
+            StartCoroutine(Helper.Delay(() => { chestDisplayContent.SetActive(false); }, contentDisplayTime));
         }
 
         private GameObject findChildByTag(Transform parent, string inputTag)

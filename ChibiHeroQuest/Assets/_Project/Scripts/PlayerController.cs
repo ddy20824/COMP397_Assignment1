@@ -34,6 +34,7 @@ namespace Platformer397
 
         [SerializeField] private Transform mainCam;
         [SerializeField] private LayerMask isCloud;
+        [SerializeField] private LayerMask groundLayer;
         [SerializeField] private int fallHeight = -10;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip attackSound;
@@ -62,9 +63,8 @@ namespace Platformer397
         private void Start()
         {
             EventManager.instance.PlayerHeal += Heal;
-            distToGround = transform.GetComponent<Collider>().bounds.extents.y;
+            distToGround = transform.GetComponent<Collider>().bounds.extents.y + 0.1f;
             input.EnablePlayerActions();
-            // input.LoadBinding();
         }
 
         private void OnEnable()
@@ -153,9 +153,12 @@ namespace Platformer397
         }
         private void GroundCheck()
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, distToGround))
+            float sphereRadius = 0.5f;
+            Vector3 origin = transform.position + Vector3.up * 1f; // avoid origin is in collider
+
+            if (Physics.SphereCast(origin, sphereRadius, Vector3.down, out RaycastHit hit, distToGround))
             {
+                Debug.DrawRay(origin, Vector3.down * distToGround, Color.green, 1.0f);
                 if (!isTouchingGround)
                 {
                     isTouchingGround = true;
@@ -164,6 +167,7 @@ namespace Platformer397
             }
             else
             {
+                Debug.DrawRay(origin, Vector3.down * distToGround, Color.red, 1.0f);
                 isTouchingGround = false;
             }
         }
@@ -193,7 +197,7 @@ namespace Platformer397
         {
             if (other.gameObject.tag == "Goal")
             {
-                transform.localRotation = new Quaternion(0, 0, 0, 0);
+                transform.SetPositionAndRotation(transform.position, Quaternion.identity);
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 anim.SetTrigger("Victory");
                 GameState.Instance.SetIsWin(true);
