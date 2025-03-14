@@ -12,8 +12,9 @@ namespace Platformer397
         [SerializeField] private TMP_Text collectableText;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip buttonSound;
-        [SerializeField] private GameObject winSubTitle;
-        [SerializeField] private GameObject loseSubTitle;
+        [SerializeField] private GameObject winTitle;
+        [SerializeField] private GameObject loseTitle;
+        [SerializeField] private TMP_Text subTitle;
         void Start()
         {
             AudioManager.Instance.PlayGameOverMusic();
@@ -22,9 +23,19 @@ namespace Platformer397
             menuGameBtn.onClick.AddListener(BackToMenu);
             rescueText.text = GameState.Instance.GetRescueCount().ToString();
             collectableText.text = GameState.Instance.GetCollectableCount().ToString();
+
             var isWin = GameState.Instance.GetIsWin();
-            winSubTitle.SetActive(isWin);
-            loseSubTitle.SetActive(!isWin);
+            winTitle.SetActive(isWin);
+            loseTitle.SetActive(!isWin);
+
+            if (GameState.Instance.GetCollectableCount() == 3 && GameState.Instance.GetRescueCount() == 3)
+            {
+                subTitle.text = "You completed all missions!";
+            }
+            else
+            {
+                subTitle.text = "You missed something...";
+            }
         }
 
         private void playButtonSound()

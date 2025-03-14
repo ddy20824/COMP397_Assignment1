@@ -63,15 +63,7 @@ namespace Platformer397
             EventManager.instance.PlayerHeal += Heal;
             distToGround = transform.GetComponent<Collider>().bounds.extents.y;
             input.EnablePlayerActions();
-            // input.LoadBinding(); // 載入上次的綁定
-
-
-            PlayerPrefs.SetInt("Hide Winning Text", 0);
-            PlayerPrefs.Save();
-
-            PlayerPrefs.SetInt("Hide Losing Text", 0);
-            PlayerPrefs.Save();
-
+            // input.LoadBinding();
         }
 
         private void OnEnable()
