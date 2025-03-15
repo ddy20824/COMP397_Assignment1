@@ -12,11 +12,15 @@ namespace Platformer397
 
         private string fullText = "Loading...";
 
-        void Start()
+        void OnEnable()
         {
             EventManager.instance.LoadingActiveEvent += DisplayLoadingProgress;
         }
 
+        void OnDisable()
+        {
+            EventManager.instance.LoadingActiveEvent -= DisplayLoadingProgress;
+        }
 
         void DisplayLoadingProgress()
         {

@@ -6,20 +6,29 @@ namespace Platformer397
 {
     public class BarController : MonoBehaviour
     {
-        public Image barImage;  // 進度條（Bar）的 Image 組件
-        public float maxValue = 5f;  // 最大值
-        private float currentValue;  // 當前數值
+        public Image barImage;
+        public float maxValue = 5f;
+        private float currentValue;
+
+        void OnEnable()
+        {
+            EventManager.instance.UpdateHealth += SetValue;
+        }
+
+        void OnDisable()
+        {
+            EventManager.instance.UpdateHealth -= SetValue;
+        }
 
         void Start()
         {
-            EventManager.instance.UpdateHealth += SetValue;
-            currentValue = maxValue;  // 初始化數值
-            UpdateBar();  // 更新 Bar
+            currentValue = maxValue;
+            UpdateBar();
         }
 
         public void SetValue(int value)
         {
-            currentValue = Mathf.Clamp(value, 0, maxValue); // 限制範圍
+            currentValue = Mathf.Clamp(value, 0, maxValue);
             StartCoroutine(SmoothUpdateBar(currentValue / maxValue));
         }
 
@@ -27,14 +36,14 @@ namespace Platformer397
         {
             if (barImage != null)
             {
-                barImage.fillAmount = currentValue / maxValue; // 設定填充比例 (0~1)
+                barImage.fillAmount = currentValue / maxValue;
             }
         }
         public IEnumerator SmoothUpdateBar(float targetValue)
         {
             float startValue = barImage.fillAmount;
             float time = 0f;
-            while (time < 0.5f) // 0.5 秒內變化
+            while (time < 0.5f)
             {
                 time += Time.unscaledDeltaTime;
                 barImage.fillAmount = Mathf.Lerp(startValue, targetValue, time / 0.5f);

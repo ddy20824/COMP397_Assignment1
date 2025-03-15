@@ -31,7 +31,6 @@ namespace Platformer397
         void Awake()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            EventManager.instance.ShowGameOver += GameOver;
         }
         void Start()
         {
@@ -43,6 +42,7 @@ namespace Platformer397
             input.Map += HandleMap;
             input.Bag += HandleBag;
             input.Pause += HandlePause;
+            EventManager.instance.ShowGameOver += GameOver;
         }
 
         private void OnDisable()
@@ -50,6 +50,7 @@ namespace Platformer397
             input.Map -= HandleMap;
             input.Bag -= HandleBag;
             input.Pause -= HandlePause;
+            EventManager.instance.ShowGameOver -= GameOver;
         }
 
         public void HandleMap()

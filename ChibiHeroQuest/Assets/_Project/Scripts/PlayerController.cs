@@ -62,7 +62,6 @@ namespace Platformer397
 
         private void Start()
         {
-            EventManager.instance.PlayerHeal += Heal;
             distToGround = transform.GetComponent<Collider>().bounds.extents.y + 0.1f;
             input.EnablePlayerActions();
         }
@@ -72,6 +71,7 @@ namespace Platformer397
             input.Move += GetMovement;
             input.Jump += HandleJump;
             input.Attack += HandleAttack;
+            EventManager.instance.PlayerHeal += Heal;
         }
 
         private void OnDisable()
@@ -79,6 +79,7 @@ namespace Platformer397
             input.Move -= GetMovement;
             input.Jump -= HandleJump;
             input.Attack -= HandleAttack;
+            EventManager.instance.PlayerHeal -= Heal;
         }
 
         private void OnDestroy()
@@ -122,7 +123,8 @@ namespace Platformer397
 
         private void HandleMovement(Vector3 adjustedDirection)
         {
-            var velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime;
+            float speedMultiply = (isTouchingGround) ? 1f : 0.6f;
+            var velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime * speedMultiply;
             rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
         }
 
@@ -278,6 +280,7 @@ namespace Platformer397
             transform.position = data.GetPlayerPosition();
             health = data.GetPlayerHealth();
             EventManager.instance.TriggerUpdateHealth(health);
+            Debug.Log("Load health");
         }
 
         public void SaveData()
