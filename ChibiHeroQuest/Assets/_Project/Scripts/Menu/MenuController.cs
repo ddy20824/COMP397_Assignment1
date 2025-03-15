@@ -39,7 +39,7 @@ namespace Platformer397
 
         void OnEnable()
         {
-            input.Map += HandleMap;
+            // input.Map += HandleMap;
             input.Bag += HandleBag;
             input.Pause += HandlePause;
             EventManager.instance.ShowGameOver += GameOver;
@@ -47,7 +47,7 @@ namespace Platformer397
 
         private void OnDisable()
         {
-            input.Map -= HandleMap;
+            // input.Map -= HandleMap;
             input.Bag -= HandleBag;
             input.Pause -= HandlePause;
             EventManager.instance.ShowGameOver -= GameOver;
