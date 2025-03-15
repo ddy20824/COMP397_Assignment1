@@ -1,5 +1,19 @@
+/*
+ * Source File: EventManager.cs
+ * Author: Chiayi Lin, YuHsuan Chen
+ * Student Number: 301448962, 301448975
+ * Date Last Modified: 2025-03-09
+ * 
+ * Program Description:
+ * This program manages events.
+ * 
+ * Revision History:
+ * - 2025-03-04: Initial version created.
+ * - 2025-03-07: Add TriggerAddInventory.
+ * - 2025-03-08: Add TriggerUpdateRescueCount, TriggerUpdateCollectableCount and TriggerHeal
+ * - 2025-03-09: Add TriggerLoadingActive.
+ */
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer397

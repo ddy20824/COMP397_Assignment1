@@ -157,15 +157,14 @@ namespace Platformer397
 
         public void SaveBinding()
         {
-            input.Disable(); // 先關閉，確保修改後能被儲存
-            // 確保綁定已經更新到 InputActionAsset
+            input.Disable();
             input.asset.LoadBindingOverridesFromJson(input.asset.SaveBindingOverridesAsJson());
 
             string bindingOverrides = input.asset.SaveBindingOverridesAsJson();
             PlayerPrefs.SetString("InputBindings", bindingOverrides);
             PlayerPrefs.Save();
 
-            input.Enable(); // 重新啟用
+            input.Enable();
         }
 
         public void LoadBinding()

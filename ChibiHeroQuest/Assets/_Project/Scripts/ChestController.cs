@@ -2,7 +2,7 @@
  * Source File: ChestController.cs
  * Author: Sylker Teles, YuHsuan Chen
  * Student Number: 301448975
- * Date Last Modified: 2025-03-07
+ * Date Last Modified: 2025-03-14
  * 
  * Program Description:
  * This program manages chests interact
@@ -10,10 +10,13 @@
  * 
  * Revision History:
  * - 2025-03-07: Initial version created. Open by iteract input.
+ * - 2025-03-09: Update collactable count
+ * - 2025-03-09: Add save data and update status when loading
+ * - 2025-03-12: Add open sound
+ * - 2025-03-13: Add chestbox item display when opening and add chest mass
+ * - 2025-03-14: Adjust show chestbox content time
  */
 
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Platformer397

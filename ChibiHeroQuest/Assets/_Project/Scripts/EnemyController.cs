@@ -1,16 +1,16 @@
 /*
  * Source File: EnemyController.cs
- * Author: Chiayi Lin
- * Student Number: 301448962
- * Date Last Modified: 2025-02-23
+ * Author: Chiayi Lin, YuHsuan Chen
+ * Student Number: 301448962, 301448975
+ * Date Last Modified: 2025-03-09
  * 
  * Program Description:
  * This program manages the enemy.
  * 
  * Revision History:
- * - 2025-02-23: Add enemy die while being attacked.
+ * - 2025-02-23: Add enemy die while being attacked and sound.
+ * - 2025-03-09: Save status and change status when loading.
  */
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;

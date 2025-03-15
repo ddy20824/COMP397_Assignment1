@@ -1,3 +1,19 @@
+/*
+ * Source File: GameOverMenu.cs
+ * Author: YuHsuan Chen, Chiayi Lin, Jen MacDonald
+ * Student Number: 301448975, 301448962, 301000349
+ * Date Last Modified: 2025-03-13
+ * 
+ * Program Description:
+ * This program is manage the game over scene.
+ * 
+ * Revision History:
+ * - 2025-03-07: Initial version created.
+ * - 2025-03-09: Add new game function and button sound.
+ * - 2025-03-12: Add subtitle and win/lose condition.
+ * - 2025-03-13: Edit title and display.
+ */
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

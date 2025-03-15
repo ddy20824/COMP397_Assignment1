@@ -1,3 +1,16 @@
+/*
+ * Source File: BarController.cs
+ * Author: YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-03-14
+ * 
+ * Program Description:
+ * This program manages manage hp bar.
+ * 
+ * Revision History:
+ * - 2025-03-08: Initial version created.
+ * - 2025-03-14: Fix event not unbind bug.
+ */
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;

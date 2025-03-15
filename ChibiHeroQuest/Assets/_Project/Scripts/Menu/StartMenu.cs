@@ -1,3 +1,17 @@
+/*
+ * Source File: OptionsMeStartMenunu.cs
+ * Author: YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-03-09
+ * 
+ * Program Description:
+ * This program manages start menu system.
+ * 
+ * Revision History:
+ * - 2025-03-07: Initial version created.
+ * - 2025-03-09: Add loading page.
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 

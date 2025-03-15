@@ -1,3 +1,20 @@
+/*
+ * Source File: GameState.cs
+ * Author: YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-03-13
+ * 
+ * Program Description:
+ * This program manages game data. This is a singleton instance.
+ * 
+ * Revision History:
+ * - 2025-03-07: Initial version created.
+ * - 2025-03-08: Add destructibleObject, collactable/rescue count, inventory, enemy and falling blocks status.
+ * - 2025-03-09: Add save/load.
+ * - 2025-03-12: Add win.
+ * - 2025-03-13: Clear inventory when restart.
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

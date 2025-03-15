@@ -1,8 +1,8 @@
 /*
  * Source File: PlayerController.cs
- * Author: Class sample, Chiayi Lin
- * Student Number: 301448962
- * Date Last Modified: 2025-02-23
+ * Author: Class sample, Chiayi Lin, YuHsuan Chen
+ * Student Number: 301448962, 301448975
+ * Date Last Modified: 2025-03-14
  * 
  * Program Description:
  * This program manages the controller of player.
@@ -12,12 +12,17 @@
  * - 2025-02-21: Add groundCheck.
  * - 2025-02-22: Add cloud.
  * - 2025-02-23: Add death and reset, sound.
+ * - 2025-03-01: Add hurt.
+ * - 2025-03-04: Add health and attack destructible crate.
+ * - 2025-03-07: Add inventory.
+ * - 2025-03-08: Add heal.
+ * - 2025-03-09: Add save/load.
+ * - 2025-03-12: Add victory animation.
+ * - 2025-03-13: Fix fly high when uphill and add fall damage sound.
+ * - 2025-03-14: Improve jump detect and fix event not unbind.
  */
 
 using UnityEngine;
-using DiabolicalGames;
-using System.Collections.Generic;
-using System;
 
 namespace Platformer397
 {

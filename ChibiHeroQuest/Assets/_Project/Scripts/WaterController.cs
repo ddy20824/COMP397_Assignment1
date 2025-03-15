@@ -21,16 +21,10 @@ namespace Platformer397
         [SerializeField] private AudioClip sound;
         [SerializeField] private LayerMask isPlayer;
         private PlayerController playerController;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+
         void Start()
         {
             playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         void OnTriggerEnter(Collider other)

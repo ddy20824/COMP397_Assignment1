@@ -1,16 +1,16 @@
 /*
  * Source File: ForestGroundFallingController.cs
- * Author: Chiayi Lin
- * Student Number: 301448962
- * Date Last Modified: 2025-02-23
+ * Author: Chiayi Lin, YuHsuan Chen
+ * Student Number: 301448962, 301448975
+ * Date Last Modified: 2025-03-09
  * 
  * Program Description:
  * This program manages the Ground falling.
  * 
  * Revision History:
  * - 2025-02-23: When CollisionEnter add rigidbody.
+ * - 2025-03-09: Add SaveData/LoadData.
  */
-
 using UnityEngine;
 
 namespace Platformer397

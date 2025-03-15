@@ -1,3 +1,18 @@
+/*
+ * Source File: OptionsMenu.cs
+ * Author: YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-03-12
+ * 
+ * Program Description:
+ * This program manages option menu.
+ * 
+ * Revision History:
+ * - 2025-02-22: Initial version created.
+ * - 2025-03-07: Add key binding.
+ * - 2025-03-12: Remove map button and add interact button.
+ */
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;

@@ -1,3 +1,15 @@
+/*
+ * Source File: FireTrapController.cs
+ * Author: Chiayi Lin
+ * Student Number: 301448962
+ * Date Last Modified: 2025-03-01
+ * 
+ * Program Description:
+ * This program manages fire trap.
+ * 
+ * Revision History:
+ * - 2025-03-01: Initial version created.
+ */
 using UnityEngine;
 
 namespace Platformer397
@@ -6,7 +18,7 @@ namespace Platformer397
     {
         [SerializeField] private GameObject fire;
         private bool fireOpening = true;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+
         void Start()
         {
             InvokeRepeating("Fire", 1.5f, 1.5f);
@@ -15,12 +27,6 @@ namespace Platformer397
         {
             fireOpening = !fireOpening;
             fire.SetActive(fireOpening);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

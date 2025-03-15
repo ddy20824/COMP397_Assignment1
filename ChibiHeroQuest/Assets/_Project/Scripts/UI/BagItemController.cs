@@ -1,3 +1,15 @@
+/*
+ * Source File: BagItemController.cs
+ * Author: Chiayi Lin
+ * Student Number: 301448962
+ * Date Last Modified: 2025-03-08
+ * 
+ * Program Description:
+ * This program manages using item in bag.
+ * 
+ * Revision History:
+ * - 2025-03-08: Initial version created.
+ */
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +24,7 @@ namespace Platformer397
         [SerializeField] private AudioClip usedSound;
         private ItemData itemType = ItemData.None;
         private int itemNum = 0;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+
         void Start()
         {
             GetComponent<Button>().onClick.AddListener(UseItem);

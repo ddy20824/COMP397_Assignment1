@@ -1,5 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Source File: LoadongController.cs
+ * Author: YuHsuan Chen
+ * Student Number: 301448975
+ * Date Last Modified: 2025-03-14
+ * 
+ * Program Description:
+ * This program manages loading page.
+ * 
+ * Revision History:
+ * - 2025-03-08: Initial version created.
+ * - 2025-03-14: Fix event not unbind bug.
+ */
 using UnityEngine;
 using TMPro;
 

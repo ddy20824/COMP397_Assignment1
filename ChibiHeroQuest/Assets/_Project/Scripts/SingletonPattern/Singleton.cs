@@ -1,3 +1,15 @@
+/*
+ * Source File: Singleton.cs
+ * Author: Class Example from proffesor
+ * Date Last Modified: 2025-03-07
+ * 
+ * Program Description:
+ * This program create a singleton.
+ * 
+ * Revision History:
+ * - 2025-03-07: Initial version created.
+ */
+
 using UnityEngine;
 
 namespace Platformer397

@@ -1,3 +1,15 @@
+/*
+ * Source File: BagController.cs
+ * Author: Chiayi Lin
+ * Student Number: 301448962
+ * Date Last Modified: 2025-03-08
+ * 
+ * Program Description:
+ * This program manages inventory system display.
+ * 
+ * Revision History:
+ * - 2025-03-08: Initial version created.
+ */
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,22 +18,10 @@ namespace Platformer397
 {
     public class BagController : MonoBehaviour
     {
-
         [SerializeField] private List<Button> buttons;
         void OnEnable()
         {
             UpdateBagItem();
-        }
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-           
         }
 
         void Clear()

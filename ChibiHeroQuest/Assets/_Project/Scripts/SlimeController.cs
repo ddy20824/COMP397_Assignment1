@@ -2,7 +2,7 @@
  * Source File: SlimeController.cs
  * Author: Chiayi Lin
  * Student Number: 301448962
- * Date Last Modified: 2025-02-23
+ * Date Last Modified: 2025-03-08
  * 
  * Program Description:
  * This program manages the slime enemy.
@@ -10,6 +10,7 @@
  * Revision History:
  * - 2025-02-22: Manage slimeEnemy action.
  * - 2025-02-23: Move same function to EnemyController.
+ * - 2025-03-08: Fix walk.
  */
 
 using UnityEngine;
