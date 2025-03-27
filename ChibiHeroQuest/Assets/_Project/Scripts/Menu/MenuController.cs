@@ -33,7 +33,9 @@ namespace Platformer397
 
         void Awake()
         {
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.Locked;
+#endif
         }
         void Start()
         {
@@ -111,42 +113,54 @@ namespace Platformer397
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.None;
+#endif
         }
 
         public void ClosePausePanel()
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.Locked;
+#endif
         }
 
         public void OpenBagPanel()
         {
             bagMenu.SetActive(true);
             Time.timeScale = 0;
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.None;
+#endif
         }
 
         public void CloseBagPanel()
         {
             bagMenu.SetActive(false);
             Time.timeScale = 1;
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.Locked;
+#endif
         }
 
         public void OpenMapPanel()
         {
             mapMenu.SetActive(true);
             Time.timeScale = 0;
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.None;
+#endif
         }
 
         public void CloseMapPanel()
         {
             mapMenu.SetActive(false);
             Time.timeScale = 1;
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.Locked;
+#endif
         }
 
         public void GameOver()

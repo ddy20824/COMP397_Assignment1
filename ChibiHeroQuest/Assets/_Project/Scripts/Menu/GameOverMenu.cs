@@ -34,7 +34,9 @@ namespace Platformer397
         void Start()
         {
             AudioManager.Instance.PlayGameOverMusic();
+#if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.None;
+#endif
             restartGameBtn.onClick.AddListener(NewGame);
             menuGameBtn.onClick.AddListener(BackToMenu);
             rescueText.text = GameState.Instance.GetRescueCount().ToString();

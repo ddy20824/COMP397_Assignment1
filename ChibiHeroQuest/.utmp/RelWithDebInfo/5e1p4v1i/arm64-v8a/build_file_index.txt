@@ -1,0 +1,2 @@
+D:\Centennial College\Semester2\COMP397 Web Game Programming\COMP397_Assignment1\ChibiHeroQuest\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Centennial College\Semester2\COMP397 Web Game Programming\COMP397_Assignment1\ChibiHeroQuest\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
