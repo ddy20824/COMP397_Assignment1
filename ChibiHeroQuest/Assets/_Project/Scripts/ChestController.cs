@@ -15,6 +15,7 @@
  * - 2025-03-12: Add open sound
  * - 2025-03-13: Add chestbox item display when opening and add chest mass
  * - 2025-03-14: Adjust show chestbox content time
+ * - 2025-03-28: Changed to be touch based
  */
 
 using UnityEngine;
@@ -34,15 +35,6 @@ namespace Platformer397
         private Animator animator;
         private GameObject chestDisplayContent;
         private float contentDisplayTime = 2f;
-
-        void OnEnable()
-        {
-            input.Interact += HandleInteract;
-        }
-        private void OnDisable()
-        {
-            input.Interact -= HandleInteract;
-        }
 
         void Start()
         {
@@ -68,6 +60,7 @@ namespace Platformer397
             }
         }
 
+
         public void Close()
         {
             if (isOpen)
@@ -82,17 +75,10 @@ namespace Platformer397
         {
             if (collision.gameObject.tag == playerTag)
             {
-                isPlayerAround = true;
-            }
-        }
-
-        private void HandleInteract()
-        {
-            if (isPlayerAround)
-            {
                 Open();
             }
         }
+
 
         private void ShowChestDisplayContent()
         {

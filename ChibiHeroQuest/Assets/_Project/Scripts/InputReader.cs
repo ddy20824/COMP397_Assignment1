@@ -10,6 +10,7 @@
  * Revision History:
  * - 2025-02-01: Initial version created.
  * - 2025-02-23: Add Map, Bag and RebindActions.
+ * - 2025-03-28: Removed interact
  */
 
 using UnityEngine;
@@ -28,7 +29,6 @@ namespace Platformer397
         public event UnityAction Map = delegate { };
         public event UnityAction Bag = delegate { };
         public event UnityAction Pause = delegate { };
-        public event UnityAction Interact = delegate { };
 
         InputSystem_Actions input;
         private void OnEnable()
@@ -65,17 +65,6 @@ namespace Platformer397
                 case InputActionPhase.Performed:
                 case InputActionPhase.Canceled:
                     Attack?.Invoke();
-                    break;
-                default:
-                    break;
-            }
-        }
-        public void OnInteract(InputAction.CallbackContext context)
-        {
-            switch (context.phase)
-            {
-                case InputActionPhase.Performed:
-                    Interact?.Invoke();
                     break;
                 default:
                     break;
