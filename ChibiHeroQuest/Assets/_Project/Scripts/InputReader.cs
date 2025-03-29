@@ -185,5 +185,9 @@ namespace Platformer397
                 action.RemoveBindingOverride(bindingIndex);
             }
         }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+        }
     }
 }
