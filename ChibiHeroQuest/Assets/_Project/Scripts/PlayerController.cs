@@ -27,7 +27,7 @@ using UnityEngine;
 namespace Platformer397
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerController : MonoBehaviour, IDataPersistent
+    public class PlayerController : Subject, IDataPersistent
     {
         [SerializeField] private InputReader input;
         [SerializeField] private Rigidbody rb;

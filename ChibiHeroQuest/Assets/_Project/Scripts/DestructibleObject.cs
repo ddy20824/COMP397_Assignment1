@@ -21,12 +21,14 @@ namespace Platformer397
         [SerializeField] private GameObject debrisPrefab;
         [SerializeField] private AudioClip audioClip;
         [SerializeField] private AudioSource audioSource;
+        private PlayerController player;
         private GameObject debris;
         private new Rigidbody rigidbody;
         private GameState gamestate;
 
         void Start()
         {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             rigidbody = GetComponent<Rigidbody>();
             debris = Instantiate(debrisPrefab, transform.position, Quaternion.identity);
             debris.SetActive(false);
@@ -58,6 +60,7 @@ namespace Platformer397
             Destroy(gameObject);
 
             gamestate.SetRescueCount(gamestate.GetRescueCount() + 1);
+            player.NotifyObservers();
             gamestate.SetDestructibleObjectName(name);
         }
 

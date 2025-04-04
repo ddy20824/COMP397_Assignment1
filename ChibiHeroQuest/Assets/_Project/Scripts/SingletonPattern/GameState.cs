@@ -66,12 +66,6 @@ namespace Platformer397
             inventory = new List<ItemData>();
         }
 
-        public void UpdateGameUI()
-        {
-            EventManager.instance.TriggerUpdateCollectableCount(collectableCount);
-            EventManager.instance.TriggerUpdateRescueCount(rescueCount);
-        }
-
         public List<ItemData> GetInventory()
         {
             return inventory;
@@ -82,7 +76,6 @@ namespace Platformer397
             if (item == ItemData.CollectableItem)
             {
                 collectableCount++;
-                EventManager.instance.TriggerUpdateCollectableCount(collectableCount);
             }
         }
 
@@ -92,7 +85,6 @@ namespace Platformer397
             if (item == ItemData.CollectableItem)
             {
                 collectableCount--;
-                EventManager.instance.TriggerUpdateCollectableCount(collectableCount);
             }
         }
 
@@ -106,10 +98,18 @@ namespace Platformer397
             return rescueCount;
         }
 
+
+        public int GetCountByNotifyType(NotifyType type)
+        {
+            if (type == NotifyType.rescueItem)
+                return rescueCount;
+            else
+                return collectableCount;
+        }
+
         public void SetRescueCount(int newCount)
         {
             rescueCount = newCount;
-            EventManager.instance.TriggerUpdateRescueCount(newCount);
 
         }
 

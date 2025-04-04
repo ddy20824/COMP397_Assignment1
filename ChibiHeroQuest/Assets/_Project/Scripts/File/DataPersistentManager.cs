@@ -58,7 +58,6 @@ namespace Platformer397
             {
                 dataPersistent.LoadData(GameState.Instance);
             }
-            GameState.Instance.UpdateGameUI();
         }
 
         public void SaveGame()

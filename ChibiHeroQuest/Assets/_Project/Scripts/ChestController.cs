@@ -31,6 +31,7 @@ namespace Platformer397
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip openSound;
         [SerializeField] private AudioClip closeSound;
+        private PlayerController player;
         private bool isPlayerAround;
         private Animator animator;
         private GameObject chestDisplayContent;
@@ -38,6 +39,7 @@ namespace Platformer397
 
         void Start()
         {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             animator = GetComponent<Animator>();
             chestDisplayContent = findChildByTag(transform, "ChestContent");
             input.EnablePlayerActions();
@@ -52,6 +54,7 @@ namespace Platformer397
                 audioSource.PlayOneShot(openSound);
                 GameState.Instance.AddInventory(chestContent);
                 GameState.Instance.SetChestBoxName(name);
+                player.NotifyObservers();
 
                 if (chestDisplayContent != null)
                 {
