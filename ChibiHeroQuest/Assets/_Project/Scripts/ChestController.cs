@@ -54,7 +54,10 @@ namespace Platformer397
                 audioSource.PlayOneShot(openSound);
                 GameState.Instance.AddInventory(chestContent);
                 GameState.Instance.SetChestBoxName(name);
-                player.NotifyObservers();
+                if (chestContent == ItemData.CollectableItem)
+                {
+                    player.NotifyObservers();
+                }
 
                 if (chestDisplayContent != null)
                 {
