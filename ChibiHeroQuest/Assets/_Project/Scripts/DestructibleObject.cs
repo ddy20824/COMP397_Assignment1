@@ -1,8 +1,8 @@
 /*
  * Source File: DestructibleObject.cs
- * Author: Rajendra Abhinaya, YuHsuan Chen
- * Student Number: 301448975
- * Date Last Modified: 2025-03-08
+ * Author: Rajendra Abhinaya, YuHsuan Chen, Chiayi Lin
+ * Student Number: 301448975, 301448962
+ * Date Last Modified: 2025-04-04
  * 
  * Program Description:
  * This program manages destructible objects
@@ -11,6 +11,7 @@
  * Revision History:
  * - 2025-03-07: Initial version created.
  * - 2025-03-08: Save status and change status when load.
+ * - 2025-04-04: Add Observer pattern
  */
 using UnityEngine;
 

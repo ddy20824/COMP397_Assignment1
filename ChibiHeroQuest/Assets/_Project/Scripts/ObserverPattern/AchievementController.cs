@@ -1,3 +1,15 @@
+/*
+ * Source File: AchievementController.cs
+ * Author: Chiayi Lin
+ * Student Number: 301448962
+ * Date Last Modified: 2025-04-04
+ * 
+ * Program Description:
+ * This program manages achievement system.
+ * 
+ * Revision History:
+ * - 2025-04-04: Initial version created.
+ */
 using UnityEngine;
 using TMPro;
 

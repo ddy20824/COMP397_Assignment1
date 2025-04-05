@@ -2,7 +2,7 @@
  * Source File: ChestController.cs
  * Author: Sylker Teles, YuHsuan Chen
  * Student Number: 301448975
- * Date Last Modified: 2025-03-14
+ * Date Last Modified: 2025-04-04
  * 
  * Program Description:
  * This program manages chests interact
@@ -16,6 +16,7 @@
  * - 2025-03-13: Add chestbox item display when opening and add chest mass
  * - 2025-03-14: Adjust show chestbox content time
  * - 2025-03-28: Changed to be touch based
+ * - 2025-04-04: Add Observer pattern
  */
 
 using UnityEngine;

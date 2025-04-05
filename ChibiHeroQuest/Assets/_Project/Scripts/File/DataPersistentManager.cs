@@ -2,7 +2,7 @@
  * Source File: DataPersistentManager.cs
  * Author: YuHsuan Chen, Chiayi Lin
  * Student Number: 301448975, 301448962
- * Date Last Modified: 2025-03-14
+ * Date Last Modified: 2025-04-04
  * 
  * Program Description:
  * This program manages data flow in the game.
@@ -10,6 +10,7 @@
  * Revision History:
  * - 2025-03-08: Initial version created. Add Save/Load game and loading scene.
  * - 2025-03-14: Remove unused variable and debug log.
+ * - 2025-04-04: Remove GameUI update because of Observer pattern
  */
 
 using System.Collections;

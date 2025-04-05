@@ -2,7 +2,7 @@
  * Source File: PlayerController.cs
  * Author: Class sample, Chiayi Lin, YuHsuan Chen
  * Student Number: 301448962, 301448975
- * Date Last Modified: 2025-03-14
+ * Date Last Modified: 2025-04-04
  * 
  * Program Description:
  * This program manages the controller of player.
@@ -20,6 +20,7 @@
  * - 2025-03-12: Add victory animation.
  * - 2025-03-13: Fix fly high when uphill and add fall damage sound.
  * - 2025-03-14: Improve jump detect and fix event not unbind.
+ * - 2025-04-04: Add Observer pattern
  */
 
 using UnityEngine;

@@ -2,7 +2,7 @@
  * Source File: EventManager.cs
  * Author: Chiayi Lin, YuHsuan Chen
  * Student Number: 301448962, 301448975
- * Date Last Modified: 2025-03-09
+ * Date Last Modified: 2025-04-04
  * 
  * Program Description:
  * This program manages events.
@@ -12,6 +12,7 @@
  * - 2025-03-07: Add TriggerAddInventory.
  * - 2025-03-08: Add TriggerUpdateRescueCount, TriggerUpdateCollectableCount and TriggerHeal
  * - 2025-03-09: Add TriggerLoadingActive.
+ * - 2025-04-04: Remove some action because of Observer pattern
  */
 using System;
 using UnityEngine;

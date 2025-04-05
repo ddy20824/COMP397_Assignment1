@@ -2,7 +2,7 @@
  * Source File: GameState.cs
  * Author: YuHsuan Chen, Chiayi Lin
  * Student Number: 301448975, 301448962
- * Date Last Modified: 2025-03-13
+ * Date Last Modified: 2025-04-04
  * 
  * Program Description:
  * This program manages game data. This is a singleton instance.
@@ -13,6 +13,7 @@
  * - 2025-03-09: Add save/load.
  * - 2025-03-12: Add win.
  * - 2025-03-13: Clear inventory when restart.
+ * - 2025-04-04: Add Observer pattern
  */
 
 using System;
