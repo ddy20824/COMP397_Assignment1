@@ -144,6 +144,10 @@ namespace Platformer397
         {
             if (Time.timeScale == 1)
             {
+                if (GameState.Instance.GetQuestIndex() == 2)
+                {
+                    NotifyObservers(ObserverType.Quest);
+                }
                 if (isAttacking)
                     audioSource.PlayOneShot(attackSound);
                 isAttacking = !isAttacking;
@@ -153,6 +157,10 @@ namespace Platformer397
 
         private void HandleJump()
         {
+            if (GameState.Instance.GetQuestIndex() == 1)
+            {
+                NotifyObservers(ObserverType.Quest);
+            }
             if (isTouchingGround)
             {
                 anim.SetBool("IsJumping", true);
@@ -182,6 +190,10 @@ namespace Platformer397
 
         private void GetMovement(Vector2 move)
         {
+            if (GameState.Instance.GetQuestIndex() == 0)
+            {
+                NotifyObservers(ObserverType.Quest);
+            }
             movement.x = move.x;
             movement.z = move.y;
         }

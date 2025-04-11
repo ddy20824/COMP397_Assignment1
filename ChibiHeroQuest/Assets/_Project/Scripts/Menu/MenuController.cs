@@ -26,7 +26,7 @@ namespace Platformer397
         public GameObject optionMenu;
         public GameObject pauseMenu;
         public GameObject bagMenu;
-        public GameObject mapMenu;
+        public GameObject questMenu;
         [SerializeField] private InputReader input;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip buttonSound;
@@ -44,7 +44,7 @@ namespace Platformer397
 
         void OnEnable()
         {
-            // input.Map += HandleMap;
+            input.Quest += HandleQuest;
             input.Bag += HandleBag;
             input.Pause += HandlePause;
             EventManager.instance.ShowGameOver += GameOver;
@@ -52,30 +52,30 @@ namespace Platformer397
 
         private void OnDisable()
         {
-            // input.Map -= HandleMap;
+            input.Quest -= HandleQuest;
             input.Bag -= HandleBag;
             input.Pause -= HandlePause;
             EventManager.instance.ShowGameOver -= GameOver;
         }
 
-        public void HandleMap()
+        public void HandleQuest()
         {
             if (!IsBagMenuActive() && !IsOptionMenuActive() && !IsPauseMenuActive())
             {
-                if (!IsMapMenuActive())
+                if (!IsQuestMenuActive())
                 {
-                    OpenMapPanel();
+                    OpenQuestPanel();
                 }
                 else
                 {
-                    CloseMapPanel();
+                    CloseQuestPanel();
                 }
             }
         }
 
         public void HandleBag()
         {
-            if (!IsPauseMenuActive() && !IsMapMenuActive())
+            if (!IsPauseMenuActive() && !IsQuestMenuActive())
             {
                 if (!IsBagMenuActive())
                 {
@@ -90,7 +90,7 @@ namespace Platformer397
 
         public void HandlePause()
         {
-            if (!IsBagMenuActive() && !IsOptionMenuActive() && !IsMapMenuActive())
+            if (!IsBagMenuActive() && !IsOptionMenuActive() && !IsQuestMenuActive())
             {
                 if (!IsPauseMenuActive())
                 {
@@ -145,18 +145,18 @@ namespace Platformer397
 #endif
         }
 
-        public void OpenMapPanel()
+        public void OpenQuestPanel()
         {
-            mapMenu.SetActive(true);
+            questMenu.SetActive(true);
             Time.timeScale = 0;
 #if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.None;
 #endif
         }
 
-        public void CloseMapPanel()
+        public void CloseQuestPanel()
         {
-            mapMenu.SetActive(false);
+            questMenu.SetActive(false);
             Time.timeScale = 1;
 #if !UNITY_ANDROID
             Cursor.lockState = CursorLockMode.Locked;
@@ -170,6 +170,7 @@ namespace Platformer397
 
         public void LoadGame()
         {
+            GameState.Instance.HandleQuestItemStatus();
             playButtonSound();
             DataPersistentManager.Instance.LoadGame();
             ClosePausePanel();
@@ -206,9 +207,9 @@ namespace Platformer397
             return bagMenu.activeSelf;
         }
 
-        private bool IsMapMenuActive()
+        private bool IsQuestMenuActive()
         {
-            return mapMenu.activeSelf;
+            return questMenu.activeSelf;
         }
 
         private bool IsPauseMenuActive()

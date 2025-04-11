@@ -61,7 +61,11 @@ namespace Platformer397
             Destroy(gameObject);
 
             gamestate.SetRescueCount(gamestate.GetRescueCount() + 1);
-            player.NotifyObservers();
+            player.NotifyObservers(ObserverType.Achievement);
+            if (GameState.Instance.GetQuestIndex() == 4)
+            {
+                player.GetComponent<PlayerController>().NotifyObservers(ObserverType.Quest);
+            }
             gamestate.SetDestructibleObjectName(name);
         }
 

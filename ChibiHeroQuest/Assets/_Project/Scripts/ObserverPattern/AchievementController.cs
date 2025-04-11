@@ -29,11 +29,11 @@ namespace Platformer397
 
         private void OnEnable()
         {
-            player.AddObserver(this);
+            player.AddObserver(this, ObserverType.Achievement);
         }
         private void OnDisable()
         {
-            player.RemoveObserver(this);
+            player.RemoveObserver(this, ObserverType.Achievement);
         }
 
         public void OnNotify()

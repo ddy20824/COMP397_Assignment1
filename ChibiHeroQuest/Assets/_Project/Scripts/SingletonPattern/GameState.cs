@@ -35,10 +35,12 @@ namespace Platformer397
         [SerializeField] private Vector3 playerPosition;
         [SerializeField] private int health;
         [SerializeField] private bool isWin = false;
+        [SerializeField] private int questIndex;
         private HashSet<string> chestBoxName;
         private HashSet<string> destuctibleObjectName;
         private HashSet<string> enemyName;
         private HashSet<string> fallingGroundName;
+        private List<QuestItem> questList;
 
         private GameState()
         {
@@ -52,6 +54,15 @@ namespace Platformer397
             fallingGroundName = new HashSet<string>();
             CastHashSetToArray();
             inventory = new List<ItemData>();
+            questList = new List<QuestItem>
+            {
+                new() {Name= "Use Stick to Move",IsComplete = false},
+                new() {Name= "Press Jump Button",IsComplete = false},
+                new() {Name= "Press Attack Button",IsComplete = false},
+                new() {Name= "Open the ChestBox",IsComplete = false},
+                new() {Name= "Rescue the Animal",IsComplete = false},
+            };
+            questIndex = 0;
         }
 
         public void ResetGameState()
@@ -65,6 +76,15 @@ namespace Platformer397
             enemyName = new HashSet<string>();
             fallingGroundName = new HashSet<string>();
             inventory = new List<ItemData>();
+            questList = new List<QuestItem>
+            {
+                new() {Name= "Use Stick to Move",IsComplete = false},
+                new() {Name= "Press Jump Button",IsComplete = false},
+                new() {Name= "Press Attack Button ",IsComplete = false},
+                new() {Name= "Open the ChestBox ",IsComplete = false},
+                new() {Name= "Rescue the Animal ",IsComplete = false},
+            };
+            questIndex = 0;
         }
 
         public List<ItemData> GetInventory()
@@ -198,5 +218,43 @@ namespace Platformer397
         {
             return isWin;
         }
+
+        public int GetQuestIndex()
+        {
+            return questIndex;
+        }
+
+        public List<QuestItem> GetAllQuest()
+        {
+            return questList;
+        }
+
+        public QuestItem GetQuestItem()
+        {
+            if (questIndex >= questList.Count) { return null; }
+            return questList[questIndex];
+        }
+
+        public void SetQuestItem()
+        {
+            questList[questIndex].IsComplete = true;
+            questIndex++;
+        }
+
+        public void HandleQuestItemStatus()
+        {
+            int index = 0;
+            while (index <= questIndex)
+            {
+                questList[index].IsComplete = true;
+                index++;
+            }
+        }
+    }
+
+    public class QuestItem
+    {
+        public string Name;
+        public bool IsComplete;
     }
 }

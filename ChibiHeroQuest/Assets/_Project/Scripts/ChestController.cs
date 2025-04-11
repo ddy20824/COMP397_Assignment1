@@ -50,6 +50,10 @@ namespace Platformer397
         {
             if (!isOpen)
             {
+                if (GameState.Instance.GetQuestIndex() == 3)
+                {
+                    player.GetComponent<PlayerController>().NotifyObservers(ObserverType.Quest);
+                }
                 isOpen = true;
                 animator.Play("Open");
                 audioSource.PlayOneShot(openSound);
@@ -57,7 +61,7 @@ namespace Platformer397
                 GameState.Instance.SetChestBoxName(name);
                 if (chestContent == ItemData.CollectableItem)
                 {
-                    player.NotifyObservers();
+                    player.NotifyObservers(ObserverType.Achievement);
                 }
 
                 if (chestDisplayContent != null)

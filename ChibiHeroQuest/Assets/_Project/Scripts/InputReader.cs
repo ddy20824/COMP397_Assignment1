@@ -26,7 +26,7 @@ namespace Platformer397
         public event UnityAction<Vector2> Move = delegate { };
         public event UnityAction Jump = delegate { };
         public event UnityAction Attack = delegate { };
-        public event UnityAction Map = delegate { };
+        public event UnityAction Quest = delegate { };
         public event UnityAction Bag = delegate { };
         public event UnityAction Pause = delegate { };
 
@@ -86,12 +86,13 @@ namespace Platformer397
         public void OnNext(InputAction.CallbackContext context) { }
         public void OnSprint(InputAction.CallbackContext context) { }
 
-        public void OnMap(InputAction.CallbackContext context)
+
+        public void OnQuest(InputAction.CallbackContext context)
         {
             switch (context.phase)
             {
                 case InputActionPhase.Performed:
-                    Map?.Invoke();
+                    Quest?.Invoke();
                     break;
                 default:
                     break;
