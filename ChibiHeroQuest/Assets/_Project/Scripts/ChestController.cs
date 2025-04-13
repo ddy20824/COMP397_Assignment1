@@ -50,7 +50,7 @@ namespace Platformer397
         {
             if (!isOpen)
             {
-                if (GameState.Instance.GetQuestIndex() == 3)
+                if (GameState.Instance.GetQuestIndex() == 2)
                 {
                     player.GetComponent<PlayerController>().NotifyObservers(ObserverType.Quest);
                 }

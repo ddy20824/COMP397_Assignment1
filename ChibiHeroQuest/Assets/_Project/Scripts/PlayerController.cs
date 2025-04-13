@@ -144,10 +144,6 @@ namespace Platformer397
         {
             if (Time.timeScale == 1)
             {
-                if (GameState.Instance.GetQuestIndex() == 2)
-                {
-                    NotifyObservers(ObserverType.Quest);
-                }
                 if (isAttacking)
                     audioSource.PlayOneShot(attackSound);
                 isAttacking = !isAttacking;

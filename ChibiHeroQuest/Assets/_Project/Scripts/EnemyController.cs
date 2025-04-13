@@ -71,6 +71,10 @@ namespace Platformer397
 
         public void TakeDamage()
         {
+            if (GameState.Instance.GetQuestIndex() == 3)
+            {
+                player.GetComponent<PlayerController>().NotifyObservers(ObserverType.Quest);
+            }
             audioSource.PlayOneShot(deadSound);
             alreadyAttacked = true;
             anim.SetBool("IsDead", true);

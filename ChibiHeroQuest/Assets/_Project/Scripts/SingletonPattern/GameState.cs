@@ -58,8 +58,8 @@ namespace Platformer397
             {
                 new() {Name= "Use Stick to Move",IsComplete = false},
                 new() {Name= "Press Jump Button",IsComplete = false},
-                new() {Name= "Press Attack Button",IsComplete = false},
                 new() {Name= "Open the ChestBox",IsComplete = false},
+                new() {Name= "Attack Enemy",IsComplete = false},
                 new() {Name= "Rescue the Animal",IsComplete = false},
             };
             questIndex = 0;
@@ -80,9 +80,9 @@ namespace Platformer397
             {
                 new() {Name= "Use Stick to Move",IsComplete = false},
                 new() {Name= "Press Jump Button",IsComplete = false},
-                new() {Name= "Press Attack Button ",IsComplete = false},
-                new() {Name= "Open the ChestBox ",IsComplete = false},
-                new() {Name= "Rescue the Animal ",IsComplete = false},
+                new() {Name= "Open the ChestBox",IsComplete = false},
+                new() {Name= "Attack Enemy",IsComplete = false},
+                new() {Name= "Rescue the Animal",IsComplete = false},
             };
             questIndex = 0;
         }
