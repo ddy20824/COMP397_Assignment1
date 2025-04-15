@@ -52,7 +52,15 @@ namespace Platformer397
 
         public void LoadData(GameState data)
         {
-            description.GetComponent<TMP_Text>().text = data.GetQuestItem().Name;
+            GameState.Instance.HandleQuestItemStatus();
+            if (data.GetQuestItem() == null)
+            {
+                quest.SetActive(false);
+            }
+            else
+            {
+                description.GetComponent<TMP_Text>().text = data.GetQuestItem().Name;
+            }
         }
 
         public void SaveData()

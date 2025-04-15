@@ -244,7 +244,7 @@ namespace Platformer397
         public void HandleQuestItemStatus()
         {
             int index = 0;
-            while (index <= questIndex)
+            while (index < questIndex)
             {
                 questList[index].IsComplete = true;
                 index++;

@@ -170,7 +170,6 @@ namespace Platformer397
 
         public void LoadGame()
         {
-            GameState.Instance.HandleQuestItemStatus();
             playButtonSound();
             DataPersistentManager.Instance.LoadGame();
             ClosePausePanel();
