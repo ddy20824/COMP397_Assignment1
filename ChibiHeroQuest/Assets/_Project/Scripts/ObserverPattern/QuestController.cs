@@ -1,3 +1,15 @@
+/*
+ * Source File: QuestMenu.cs
+ * Author: Class example, Chiayi Lin
+ * Student Number: 301448962
+ * Date Last Modified: 2025-04-11
+ * 
+ * Program Description:
+ * This program manages quest menu.
+ * 
+ * Revision History:
+ * - 2025-04-11: Initial version created.
+ */
 using System.Collections;
 using TMPro;
 using UnityEngine;
